@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="gradient"></div>
-    <SideMenu />
+    <Menu />
     <div class="wrapper">
       <transition name="fade" mode="out-in">
         <router-view />
@@ -12,12 +12,12 @@
 
 <script>
 // @ is an alias to /src
-import SideMenu from "@/components/SideMenu.vue";
+import Menu from "@/components/Menu.vue";
 
 export default {
   name: "App",
   components: {
-    SideMenu
+    Menu
   }
 };
 </script>

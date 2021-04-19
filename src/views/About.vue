@@ -13,7 +13,7 @@
       <div class="about-skills">
         <h4>Development tools and languages:</h4>
         <div>
-          <span v-for="skill in profile.skills" :key="skill.id">
+          <span v-for="skill in profile.skills" :key="skill.name">
             {{ skill }}<i>,</i></span
           >
         </div>
@@ -34,7 +34,7 @@
       <div class="about-social">
         <a
           v-for="s in socials"
-          :key="`${s.id}`"
+          :key="`${s.name}`"
           :href="`${s.url}`"
           target="_blank"
           :style="`color:${s.color};`"
@@ -48,7 +48,7 @@
 
 <script>
 export default {
-  name: "About",
+  name: "about",
   data() {
     return {
       profiles: [
@@ -79,11 +79,6 @@ export default {
           url: "https://www.pinterest.com/neveredgaras",
           name: "Pinterest",
           color: "#cb2027"
-        },
-        {
-          url: "https://twitter.com/ed_neverdauskas",
-          name: "Twitter",
-          color: "#55acee"
         },
         {
           url: "https://www.instagram.com/edgaras.neverdauskas",
