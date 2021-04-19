@@ -35,7 +35,6 @@ export default {
   position: relative;
   display: inline-block;
   width: 70px;
-  height: 40px;
   margin: 20px;
   @media only screen and (min-width: 768px) {
     position: fixed;
@@ -50,20 +49,17 @@ export default {
   position: absolute;
   top: 25px;
   right: 20px;
-  height: 35px;
   @media only screen and (min-width: 768px) {
     position: fixed;
     top: auto;
-    bottom: 2em;
-    left: 3em;
+    bottom: 2.5rem;
+    left: 3rem;
     margin: 0;
     width: 90px;
-    height: auto;
   }
   @media only screen and (min-width: 1024px) {
-    bottom: 4em;
     left: 4rem;
-    width: 50px;
+    width: 55px;
   }
   a {
     display: inline-block;
@@ -85,7 +81,7 @@ export default {
       width: 55px;
       height: 55px;
       background-size: 32px;
-      margin-left: auto;
+      margin: auto;
       margin-top: 20px;
     }
     &:hover {
