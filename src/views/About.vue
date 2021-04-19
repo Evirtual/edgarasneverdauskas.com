@@ -99,7 +99,7 @@ export default {
 <style lang="scss">
 .about {
   margin-bottom: 20px;
-  max-width: 600px;
+  max-width: 620px;
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.85);
   color: black;
