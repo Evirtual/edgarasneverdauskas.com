@@ -52,12 +52,13 @@ export default {
   @media only screen and (min-width: 768px) {
     position: fixed;
     top: auto;
-    bottom: 2.5rem;
+    bottom: 2rem;
     left: 3rem;
     margin: 0;
     width: 90px;
   }
   @media only screen and (min-width: 1024px) {
+    bottom: 3rem;
     left: 4rem;
     width: 55px;
   }
