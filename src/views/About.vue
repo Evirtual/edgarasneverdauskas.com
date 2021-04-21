@@ -55,7 +55,7 @@ export default {
         {
           name: "Edgaras Neverdauskas",
           phone: "+855 816 80954",
-          email: "neverdauskas.edgaras@gmail.com",
+          email: "contact@edgarasneverdauskas.com",
           skills: ["React", "Vue CLI", "GitHub", "Node.js", "WordPress", "HTML", "CSS", "JavaScript", "PHP", "ASP"]
         }
       ],
