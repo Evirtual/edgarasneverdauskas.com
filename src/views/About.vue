@@ -3,12 +3,12 @@
     <div v-for="profile in profiles" :key="profile.id">
       <div class="about-info">
         <h3>Hello World!</h3>
-        <p>Life for me is like a Living Cell and by contributing my observations I want to share the same view with everyone. We are all one big collaborative family. Everything is connected and alive.</p>
+        <p>Life for me is like a living cell and by contributing my observations I want to share the same view with everyone. We are all one big collaborative family. Everything is connected and alive.</p>
         <h4>A little bit info about my current activities:</h4>
-        <p>I enjoy traveling, visiting places that I've never been before and at the same time taking scenery pictures and videos, spending time in nature (especially forests, beaches, mountains and lakes). It gives me peace and more understanding of the life we are in.</p>
-        <p>Another passion I have is exploring dreams, talk about them and analyzing the connection to the waken world as well as talking about life itself and I am happy to share those thoughts with everyone.</p>
+        <p>I enjoy traveling, visiting places that I've never been before and at the same time taking scenery pictures and videos, spending time in nature (especially forests, beaches, mountains, and lakes). It gives me peace and more understanding of life.</p>
+        <p>Another passion I have is exploring dreams - analyzing the connection to the waken world. As well as discussing life itself and sharing those thoughts with everyone.</p>
         <h4>UX consultancy and development:</h4>
-        <p>Over the past decade I spent time learning design practices in a digital world and imerssed myself into the code to make designs become usable interfaces not only for practicality but also for personal interest in art and mathematics.</p>
+        <p>Over the past decade, I spent time learning design practices in a digital world and started coding to make designs become usable interfaces not only for practicality but also for personal interest in art and math.</p>
       </div>
       <div class="about-skills">
         <h4>Development tools and languages:</h4>
@@ -56,7 +56,7 @@ export default {
           name: "Edgaras Neverdauskas",
           phone: "+855 816 80954",
           email: "contact@edgarasneverdauskas.com",
-          skills: ["React", "Vue CLI", "GitHub", "Node.js", "WordPress", "HTML", "CSS", "JavaScript", "PHP", "ASP"]
+          skills: ["React", "Vue CLI", "GitHub", "Node.js", "HTML", "CSS", "JavaScript", "PHP", "ASP"]
         }
       ],
       socials: [
@@ -94,7 +94,7 @@ export default {
 <style lang="scss">
 .about {
   margin-bottom: 20px;
-  max-width: 620px;
+  max-width: 580px;
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.85);
   color: black;
