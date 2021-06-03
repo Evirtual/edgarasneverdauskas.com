@@ -5,9 +5,8 @@
     </router-link>
     <div class="nav">
       <router-link to="/" class="nav-home"></router-link>
-      <router-link to="/plants" class="nav-plants"></router-link>
-      <router-link to="/forest" class="nav-forest"></router-link>
-      <router-link to="/beach" class="nav-beach"></router-link>
+      <router-link to="/landscape" class="nav-landscape"></router-link>
+      <router-link to="/ecology" class="nav-ecology"></router-link>
       <router-link to="/about" class="nav-about"></router-link>
     </div>
   </div>
@@ -35,6 +34,7 @@ export default {
   position: relative;
   display: inline-block;
   width: 70px;
+  height: 45px;
   margin: 20px;
   @media only screen and (min-width: 768px) {
     position: fixed;
@@ -101,14 +101,11 @@ export default {
     background-position: 9px center !important;
   }
 }
-.nav-plants {
-  background-image: url("../assets/plant.svg");
+.nav-landscape {
+  background-image: url("../assets/landscape.svg");
 }
-.nav-forest {
-  background-image: url("../assets/tree.svg");
-}
-.nav-beach {
-  background-image: url("../assets/nautilus.svg");
+.nav-ecology {
+  background-image: url("../assets/ecology.svg");
 }
 .nav-about {
   background-image: url("../assets/man.svg");

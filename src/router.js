@@ -14,22 +14,16 @@ export default new Router({
       component: Home,
     },
     {
-      path: "/plants",
-      name: "plants",
+      path: "/landscape",
+      name: "landscape",
       component: () =>
-        import("./views/Plants.vue")
+        import("./views/Landscape.vue")
     },
     {
-      path: "/forest",
-      name: "forest",
+      path: "/ecology",
+      name: "ecology",
       component: () =>
-        import("./views/Forest.vue")
-    },
-    {
-      path: "/beach",
-      name: "beach",
-      component: () =>
-        import("./views/Beach.vue")
+        import("./views/Ecology.vue")
     },
     {
       path: "/about",
