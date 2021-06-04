@@ -24,7 +24,7 @@ export default {
           description: ""
         },
         {
-          url: "https://live.staticflickr.com/65535/51221804027_91aeab3820_h.jpg",
+          url: "https://live.staticflickr.com/65535/51221804027_d6a1bde57b_h.jpg",
           name: "",
           description: ""
         },
