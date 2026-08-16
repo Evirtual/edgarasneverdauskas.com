@@ -1,20 +1,10 @@
 import Container from "./Container";
-import HeroGraphic from "./HeroGraphic";
 import { site } from "@/lib/content";
 
 export default function Hero() {
   return (
-    <section className="relative z-0 overflow-hidden pt-14 pb-14 md:pt-20 md:pb-16">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[560px] -z-10"
-        style={{
-          background:
-            "radial-gradient(60% 50% at 50% 0%, color-mix(in oklab, var(--color-accent) 12%, transparent), transparent 70%)",
-        }}
-      />
-      <HeroGraphic />
-      <Container className="relative z-10">
+    <section className="pt-14 pb-14 md:pt-20 md:pb-16">
+      <Container>
         <p className="mb-6 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-accent)]">
           {site.location} — Open to local &amp; remote roles
         </p>

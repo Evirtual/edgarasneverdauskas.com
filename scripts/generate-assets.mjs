@@ -23,31 +23,34 @@ const MUTED = "#a7abae";
 const MARK_FONT_STACK =
   "-apple-system, Segoe UI, Roboto, Arial, sans-serif";
 
+// Measured (via canvas pixel-scan) ink bounds of "EN" at x=0 y=19.3, font-size 21,
+// weight 700, with this font stack: roughly x:[1.6, 26.1], cap-height top≈4.6.
+// The accent square sits after it with a small gap, vertically centered on the
+// cap-height band — kept in sync with src/components/LogoMark.tsx by hand.
 function markSvgInner() {
   return `
-    <text x="0" y="19" font-family="${MARK_FONT_STACK}" font-weight="700" font-size="21" letter-spacing="-0.5" fill="${INK}">EN</text>
-    <circle cx="30" cy="19.5" r="2.6" fill="${ACCENT}" />
+    <text x="0" y="19.3" font-family="${MARK_FONT_STACK}" font-weight="700" font-size="21" fill="${INK}">EN</text>
+    <rect x="30.1" y="8.7" width="6.5" height="6.5" rx="1.2" fill="${ACCENT}" />
   `;
 }
 
 function markHtml(size) {
   const radius = Math.round(size * 0.22);
-  // Glyph fills nearly the full icon, with only a thin margin — the mark
-  // should read clearly as content, not float in a mostly-empty square.
-  const glyphWidth = Math.round(size * 0.86);
-  const glyphHeight = Math.round(glyphWidth * (24 / 33));
-  const border = Math.max(1, Math.round(size * 0.015));
+  // Glyph fills nearly the full icon, edge to edge — the mark should read
+  // clearly as content, not float in a mostly-empty square.
+  const glyphWidth = Math.round(size * 0.92);
+  const glyphHeight = Math.round(glyphWidth * (24 / 38));
   return `<!doctype html><html><head><meta charset="utf-8"><style>
     html,body{margin:0;padding:0;background:transparent;}
     .mark{
       width:${size}px;height:${size}px;border-radius:${radius}px;
       background:${BG};
       display:flex;align-items:center;justify-content:center;
-      box-sizing:border-box;border:${border}px solid #1f2224;
+      box-sizing:border-box;
     }
   </style></head><body>
     <div class="mark">
-      <svg width="${glyphWidth}" height="${glyphHeight}" viewBox="0 0 33 24">
+      <svg width="${glyphWidth}" height="${glyphHeight}" viewBox="0 0 38 24">
         ${markSvgInner()}
       </svg>
     </div>
@@ -90,7 +93,7 @@ function ogHtml() {
     <div class="card">
       <div class="glow"></div>
       <div class="badge">
-        <svg width="66" height="33" viewBox="0 0 33 24">
+        <svg width="70" height="44" viewBox="0 0 38 24">
           ${markSvgInner()}
         </svg>
       </div>
