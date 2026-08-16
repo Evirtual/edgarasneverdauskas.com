@@ -4,6 +4,10 @@
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
+  --breakpoint-xs: 30rem;
+}
+
+:root {
   --color-bg: #0a0b0c;
   --color-bg-raised: #101214;
   --color-border: #1f2224;
@@ -13,8 +17,22 @@
   --color-ink-faint: #6c7275;
   --color-accent: #5eead4;
   --color-accent-dim: #3fae9c;
+  --color-accent-ink: #0a0b0c;
+  color-scheme: dark;
+}
 
-  --breakpoint-xs: 30rem;
+:root[data-theme="light"] {
+  --color-bg: #ffffff;
+  --color-bg-raised: #f6f6f7;
+  --color-border: #e8e8ea;
+  --color-border-strong: #d1d2d5;
+  --color-ink: #0b0c0d;
+  --color-ink-muted: #55585d;
+  --color-ink-faint: #86898e;
+  --color-accent: #0d9488;
+  --color-accent-dim: #0b7f74;
+  --color-accent-ink: #ffffff;
+  color-scheme: light;
 }
 
 @layer base {
@@ -24,7 +42,6 @@
 
   html {
     background: var(--color-bg);
-    color-scheme: dark;
   }
 
   body {
@@ -35,9 +52,19 @@
     text-rendering: optimizeLegibility;
   }
 
+  body,
+  body * {
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease,
+      color 150ms ease,
+      fill 150ms ease,
+      stroke 150ms ease;
+  }
+
   ::selection {
     background: var(--color-accent);
-    color: var(--color-bg);
+    color: var(--color-accent-ink);
   }
 
   a {

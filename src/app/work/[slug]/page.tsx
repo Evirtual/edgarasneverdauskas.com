@@ -91,7 +91,7 @@ export default async function ProjectPage({
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full bg-[var(--color-accent)] px-5 py-2.5 text-sm font-medium text-[var(--color-bg)] transition-opacity hover:opacity-90"
+                className="rounded-full bg-[var(--color-accent)] px-5 py-2.5 text-sm font-medium text-[var(--color-accent-ink)] transition-opacity hover:opacity-90"
               >
                 {link.label} ↗
               </a>

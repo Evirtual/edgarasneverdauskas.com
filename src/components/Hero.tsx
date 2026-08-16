@@ -40,7 +40,7 @@ export default function Hero() {
         <div className="mt-10 flex flex-wrap items-center gap-4">
           <a
             href="#work"
-            className="rounded-full bg-[var(--color-accent)] px-6 py-3 text-sm font-medium text-[var(--color-bg)] transition-opacity hover:opacity-90"
+            className="rounded-full bg-[var(--color-accent)] px-6 py-3 text-sm font-medium text-[var(--color-accent-ink)] transition-opacity hover:opacity-90"
           >
             View selected work
           </a>

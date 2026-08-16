@@ -66,3 +66,25 @@ test("sitemap and robots are reachable", async ({ request }) => {
   const robots = await request.get("/robots.txt");
   expect(robots.ok()).toBeTruthy();
 });
+
+test("theme toggle switches and persists across reload", async ({ page }) => {
+  await page.goto("/");
+  const initial = await page.evaluate(() =>
+    document.documentElement.getAttribute("data-theme")
+  );
+  await page.getByRole("button", { name: /Switch to (light|dark) mode/ }).click();
+  const toggled = await page.evaluate(() =>
+    document.documentElement.getAttribute("data-theme")
+  );
+  expect(toggled).not.toBe(initial);
+  expect(await page.evaluate(() => localStorage.getItem("theme"))).toBe(toggled);
+
+  // No flash of the wrong theme on reload: body background should already
+  // match the stored preference before any client JS re-applies it.
+  const expectedBg = toggled === "light" ? "rgb(255, 255, 255)" : "rgb(10, 11, 12)";
+  await page.reload();
+  const bgOnLoad = await page.evaluate(
+    () => getComputedStyle(document.body).backgroundColor
+  );
+  expect(bgOnLoad).toBe(expectedBg);
+});
