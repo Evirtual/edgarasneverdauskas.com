@@ -3,7 +3,7 @@ import { site } from "@/lib/content";
 
 export default function Contact() {
   return (
-    <Section id="contact" className="pb-28 md:pb-36">
+    <Section id="contact" className="pb-16 md:pb-20">
       <div className="rounded-3xl border border-[var(--color-border)] bg-[var(--color-bg-raised)] px-6 py-14 md:px-16 md:py-20 text-center">
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-accent)]">
           Get in touch

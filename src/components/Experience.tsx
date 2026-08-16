@@ -5,6 +5,7 @@ export default function Experience() {
   return (
     <Section
       id="experience"
+      index="02"
       eyebrow="Experience"
       title="Professional experience"
     >

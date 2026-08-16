@@ -12,6 +12,7 @@ export default function AIWorkflow() {
   return (
     <Section
       id="ai-workflow"
+      index="03"
       eyebrow="How I work"
       title="AI-assisted engineering"
       description="I use OpenAI Codex and Claude Code as part of my day-to-day engineering workflow — not as a novelty, but as tools that make me faster at implementation, refactoring, debugging and research."

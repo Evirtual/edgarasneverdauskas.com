@@ -16,22 +16,38 @@ const ACCENT = "#5eead4";
 const INK = "#f2f2f0";
 const MUTED = "#a7abae";
 
+// Same "EN." mark used for the in-app logo (src/components/LogoMark.tsx),
+// rendered here so the favicon/app icons are the identical asset, not a lookalike.
+const MARK_SVG_INNER = `
+  <rect x="3" y="3" width="3" height="18" fill="${INK}" />
+  <rect x="3" y="3" width="9" height="3" fill="${INK}" />
+  <rect x="3" y="10.5" width="6" height="3" fill="${INK}" />
+  <rect x="3" y="18" width="9" height="3" fill="${INK}" />
+  <rect x="16" y="3" width="3" height="18" fill="${INK}" />
+  <rect x="25" y="3" width="3" height="18" fill="${INK}" />
+  <polygon points="16,3 19,3 28,21 25,21" fill="${INK}" />
+  <rect x="30" y="18" width="3" height="3" rx="0.75" fill="${ACCENT}" />
+`;
+
 function markHtml(size) {
   const radius = Math.round(size * 0.22);
-  const fontSize = Math.round(size * 0.52);
+  const glyphWidth = Math.round(size * 0.64);
+  const glyphHeight = Math.round(glyphWidth * (24 / 34));
+  const border = Math.max(1, Math.round(size * 0.02));
   return `<!doctype html><html><head><meta charset="utf-8"><style>
     html,body{margin:0;padding:0;background:transparent;}
     .mark{
       width:${size}px;height:${size}px;border-radius:${radius}px;
       background:${BG};
       display:flex;align-items:center;justify-content:center;
-      font-family:ui-sans-serif,Arial,sans-serif;font-weight:800;
-      font-size:${fontSize}px;color:${ACCENT};line-height:1;
-      box-sizing:border-box;border:${Math.max(1, Math.round(size * 0.02))}px solid #1f2224;
+      box-sizing:border-box;border:${border}px solid #1f2224;
     }
-    .mark span{transform:translateY(${Math.round(size * 0.02)}px);}
   </style></head><body>
-    <div class="mark"><span>E</span></div>
+    <div class="mark">
+      <svg width="${glyphWidth}" height="${glyphHeight}" viewBox="0 0 34 24" fill="none">
+        ${MARK_SVG_INNER}
+      </svg>
+    </div>
   </body></html>`;
 }
 
@@ -51,6 +67,11 @@ function ogHtml() {
       width:900px;height:560px;border-radius:50%;
       background:radial-gradient(closest-side, rgba(94,234,212,0.16), transparent 70%);
     }
+    .badge{
+      position:relative;width:76px;height:56px;border-radius:14px;
+      background:${BG};border:1px solid #1f2224;
+      display:flex;align-items:center;justify-content:center;margin-bottom:32px;
+    }
     .eyebrow{
       font-family:ui-monospace,Menlo,monospace;font-size:20px;letter-spacing:0.2em;
       text-transform:uppercase;color:${ACCENT};margin:0 0 28px 0;position:relative;
@@ -65,6 +86,11 @@ function ogHtml() {
   </style></head><body>
     <div class="card">
       <div class="glow"></div>
+      <div class="badge">
+        <svg width="44" height="31" viewBox="0 0 34 24" fill="none">
+          ${MARK_SVG_INNER}
+        </svg>
+      </div>
       <p class="eyebrow">Phnom Penh, Cambodia</p>
       <h1>Edgaras Neverdauskas</h1>
       <h2>Senior Product Engineer</h2>

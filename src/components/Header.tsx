@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Container from "./Container";
+import LogoMark from "./LogoMark";
 import { site } from "@/lib/content";
 
 const navLinks = [
@@ -15,9 +16,10 @@ export default function Header() {
       <Container className="flex h-16 items-center justify-between">
         <Link
           href="/"
-          className="font-mono text-sm font-medium tracking-tight text-[var(--color-ink)]"
+          aria-label={`${site.name} — home`}
+          className="text-[var(--color-ink)] transition-opacity hover:opacity-80"
         >
-          EN<span className="text-[var(--color-accent)]">.</span>
+          <LogoMark className="h-5 w-auto" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">

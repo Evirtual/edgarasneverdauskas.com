@@ -3,7 +3,7 @@ import { site } from "@/lib/content";
 
 export default function About() {
   return (
-    <Section id="about" eyebrow="About" title="A bit about me">
+    <Section id="about" index="05" eyebrow="About" title="A bit about me">
       <div className="max-w-2xl space-y-5 text-lg leading-relaxed text-[var(--color-ink-muted)]">
         <p>
           I&apos;m a senior product engineer with {site.yearsExperience} years

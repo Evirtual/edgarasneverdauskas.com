@@ -6,6 +6,7 @@ export default function SelectedWork() {
   return (
     <Section
       id="work"
+      index="01"
       eyebrow="Selected work"
       title="Products I've built and shipped"
       description="Projects spanning fintech, Web3, AI and consumer products — from data pipelines to production DeFi interfaces."
