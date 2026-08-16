@@ -25,12 +25,12 @@ const MARK_FONT_STACK =
 
 // Measured (via canvas pixel-scan) ink bounds of "EN" at x=0 y=19.3, font-size 21,
 // weight 700, with this font stack: roughly x:[1.6, 26.1], cap-height top≈4.6.
-// The accent square sits after it with a small gap, vertically centered on the
+// The accent square sits after it with a small gap, bottom-aligned to the
 // cap-height band — kept in sync with src/components/LogoMark.tsx by hand.
 function markSvgInner() {
   return `
     <text x="0" y="19.3" font-family="${MARK_FONT_STACK}" font-weight="700" font-size="21" fill="${INK}">EN</text>
-    <rect x="30.1" y="8.7" width="6.5" height="6.5" rx="1.2" fill="${ACCENT}" />
+    <rect x="30.1" y="12.8" width="6.5" height="6.5" rx="1.2" fill="${ACCENT}" />
   `;
 }
 

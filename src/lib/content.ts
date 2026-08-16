@@ -79,7 +79,7 @@ export const projects: Project[] = [
     slug: "liquidloans-fetch-oracle",
     name: "LiquidLoans / Fetch Oracle",
     role: "Frontend Engineer",
-    period: "2022 — 2025",
+    period: "2022 — 2026",
     status: "Professional engagement",
     summary:
       "Frontend engineering across a multi-chain DeFi ecosystem — borrowing, staking, liquidations, and oracle reporting interfaces handling live on-chain financial state.",
@@ -289,7 +289,7 @@ export const experience: ExperienceEntry[] = [
     role: "Frontend Engineer",
     org: "LiquidLoans ecosystem",
     location: "Remote",
-    period: "2022 — 2025",
+    period: "2022 — 2026",
     description:
       "DeFi interfaces spanning borrowing, staking, liquidations and wallet integrations, including work on Fetch Oracle and multi-chain deployments.",
   },

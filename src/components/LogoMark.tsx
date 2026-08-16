@@ -15,7 +15,7 @@ export default function LogoMark({ className = "" }: { className?: string }) {
       >
         EN
       </text>
-      <rect x="30.1" y="8.7" width="6.5" height="6.5" rx="1.2" fill="var(--color-accent)" />
+      <rect x="30.1" y="12.8" width="6.5" height="6.5" rx="1.2" fill="var(--color-accent)" />
     </svg>
   );
 }
