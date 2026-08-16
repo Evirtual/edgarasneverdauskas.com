@@ -17,23 +17,26 @@ const INK = "#f2f2f0";
 const MUTED = "#a7abae";
 
 // Same "EN." mark used for the in-app logo (src/components/LogoMark.tsx),
-// rendered here so the favicon/app icons are the identical asset, not a lookalike.
-const MARK_SVG_INNER = `
-  <rect x="3" y="3" width="3" height="18" fill="${INK}" />
-  <rect x="3" y="3" width="9" height="3" fill="${INK}" />
-  <rect x="3" y="10.5" width="6" height="3" fill="${INK}" />
-  <rect x="3" y="18" width="9" height="3" fill="${INK}" />
-  <rect x="16" y="3" width="3" height="18" fill="${INK}" />
-  <rect x="25" y="3" width="3" height="18" fill="${INK}" />
-  <polygon points="16,3 19,3 28,21 25,21" fill="${INK}" />
-  <rect x="30" y="18" width="3" height="3" rx="0.75" fill="${ACCENT}" />
-`;
+// rendered here (with a system-font fallback for the Geist variable, which
+// isn't loaded on this blank page) so the favicon/app icons are the same
+// asset as the header logo, not a lookalike.
+const MARK_FONT_STACK =
+  "-apple-system, Segoe UI, Roboto, Arial, sans-serif";
+
+function markSvgInner() {
+  return `
+    <text x="0" y="19" font-family="${MARK_FONT_STACK}" font-weight="700" font-size="21" letter-spacing="-0.5" fill="${INK}">EN</text>
+    <circle cx="30" cy="19.5" r="2.6" fill="${ACCENT}" />
+  `;
+}
 
 function markHtml(size) {
   const radius = Math.round(size * 0.22);
-  const glyphWidth = Math.round(size * 0.64);
-  const glyphHeight = Math.round(glyphWidth * (24 / 34));
-  const border = Math.max(1, Math.round(size * 0.02));
+  // Glyph fills nearly the full icon, with only a thin margin — the mark
+  // should read clearly as content, not float in a mostly-empty square.
+  const glyphWidth = Math.round(size * 0.86);
+  const glyphHeight = Math.round(glyphWidth * (24 / 33));
+  const border = Math.max(1, Math.round(size * 0.015));
   return `<!doctype html><html><head><meta charset="utf-8"><style>
     html,body{margin:0;padding:0;background:transparent;}
     .mark{
@@ -44,8 +47,8 @@ function markHtml(size) {
     }
   </style></head><body>
     <div class="mark">
-      <svg width="${glyphWidth}" height="${glyphHeight}" viewBox="0 0 34 24" fill="none">
-        ${MARK_SVG_INNER}
+      <svg width="${glyphWidth}" height="${glyphHeight}" viewBox="0 0 33 24">
+        ${markSvgInner()}
       </svg>
     </div>
   </body></html>`;
@@ -68,7 +71,7 @@ function ogHtml() {
       background:radial-gradient(closest-side, rgba(94,234,212,0.16), transparent 70%);
     }
     .badge{
-      position:relative;width:76px;height:56px;border-radius:14px;
+      position:relative;width:84px;height:52px;border-radius:14px;
       background:${BG};border:1px solid #1f2224;
       display:flex;align-items:center;justify-content:center;margin-bottom:32px;
     }
@@ -87,8 +90,8 @@ function ogHtml() {
     <div class="card">
       <div class="glow"></div>
       <div class="badge">
-        <svg width="44" height="31" viewBox="0 0 34 24" fill="none">
-          ${MARK_SVG_INNER}
+        <svg width="66" height="33" viewBox="0 0 33 24">
+          ${markSvgInner()}
         </svg>
       </div>
       <p class="eyebrow">Phnom Penh, Cambodia</p>
