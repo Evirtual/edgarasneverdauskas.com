@@ -180,8 +180,39 @@ export const projects: Project[] = [
       "Deployed via GitHub Actions to a dedicated custom subdomain",
     ],
     tech: ["React", "TypeScript", "Vite", "GitHub Actions", "Wallet integrations"],
-    links: [],
+    links: [{ label: "Live product", url: "https://bitcoin.edgarasneverdauskas.com" }],
     note: "Built with a heavily AI-assisted engineering workflow — product direction, architecture, review and final quality were mine throughout.",
+    featured: true,
+  },
+  {
+    slug: "social-blockchain-network",
+    name: "Social Blockchain Network",
+    role: "Independent Product Engineer",
+    period: "2025 — 2026",
+    status: "Testnet prototype",
+    summary:
+      "A social product experiment where posts are minted as NFTs: likes and comments are wallet-signed on-chain interactions, and tips go directly to creators, deployed across three testnets.",
+    problem:
+      "Exploring what a social feed looks like when posts, reactions and tipping are on-chain primitives instead of rows in a database — including what that does to identity, ownership and creator payouts.",
+    ownership: [
+      "Product concept, architecture and implementation end to end",
+      "Wallet-based identity and on-chain post minting",
+      "Wallet-signed reactions (likes/comments) and direct creator tipping",
+      "IPFS media storage and subgraph-driven application data",
+    ],
+    challenges: [
+      "Designing a feed UX where every write (post, like, comment, tip) is a signed on-chain transaction with real latency",
+      "Indexing on-chain activity into a readable feed via subgraphs instead of a traditional database",
+      "Running the same application logic consistently across three separate testnets",
+    ],
+    decisions: [
+      "Posts as NFTs and reactions as signed on-chain interactions, rather than bolting a wallet onto a conventional backend",
+      "IPFS for media so post content isn't dependent on centralized storage",
+      "Deployed to Base Sepolia, Ethereum Sepolia and BSC Testnet as a multi-chain testbed before any mainnet decision",
+    ],
+    tech: ["Wallet integrations", "NFTs", "Subgraphs", "IPFS", "Multi-chain"],
+    links: [{ label: "Live testnet product", url: "https://social.edgarasneverdauskas.com" }],
+    note: "Runs on public testnets (Base Sepolia, Ethereum Sepolia, BSC Testnet) — no real funds involved.",
     featured: true,
   },
   {
@@ -225,18 +256,15 @@ export const projects: Project[] = [
 export type OtherWork = {
   name: string;
   description: string;
+  url?: string;
 };
 
 export const otherWork: OtherWork[] = [
   {
-    name: "Blockchain-native social network experiment",
-    description:
-      "An exploration of wallet-based identity and on-chain-anchored posts for a social product concept.",
-  },
-  {
-    name: "Tokenization experiments",
+    name: "Tokenization boilerplate",
     description:
       "Independent exploration of tokenization patterns and infrastructure in TypeScript.",
+    url: "https://evirtual.github.io/tokenization-boilerplate/",
   },
 ];
 

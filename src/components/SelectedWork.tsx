@@ -8,7 +8,7 @@ export default function SelectedWork() {
       id="work"
       eyebrow="Selected work"
       title="Products I've built and shipped"
-      description="Five projects spanning fintech, Web3, AI and consumer products — from data pipelines to production DeFi interfaces."
+      description="Projects spanning fintech, Web3, AI and consumer products — from data pipelines to production DeFi interfaces."
     >
       <div className="grid gap-6 md:grid-cols-2">
         {projects.map((project) => (
@@ -77,7 +77,18 @@ export default function SelectedWork() {
           {otherWork.map((item) => (
             <div key={item.name}>
               <p className="text-sm font-medium text-[var(--color-ink)]">
-                {item.name}
+                {item.url ? (
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[var(--color-accent)]"
+                  >
+                    {item.name} ↗
+                  </a>
+                ) : (
+                  item.name
+                )}
               </p>
               <p className="mt-1 text-sm text-[var(--color-ink-muted)]">
                 {item.description}
