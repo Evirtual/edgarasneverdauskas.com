@@ -40,6 +40,12 @@ export async function generateMetadata({
         },
       ],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.name} — Edgaras Neverdauskas`,
+      description: project.summary,
+      images: ["/og-image.png"],
+    },
   });
 }
 
