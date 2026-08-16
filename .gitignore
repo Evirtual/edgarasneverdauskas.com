@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
+/out
+/.next
 /dist
-
 
 # local env files
 .env.local
@@ -21,3 +22,13 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Playwright
+/test-results
+/playwright-report
+/blob-report
+/playwright/.cache

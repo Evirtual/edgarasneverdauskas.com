@@ -1,24 +1,35 @@
 # edgarasneverdauskas.com
 
-## Project setup
-```
+Personal portfolio for Edgaras Neverdauskas — Senior Product Engineer.
+
+Built with Next.js (App Router, static export), React, TypeScript and Tailwind CSS. Deployed to GitHub Pages via GitHub Actions.
+
+## Development
+
+```bash
 npm install
+npm run dev
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Production build (static export to /out)
 
-### Compiles and minifies for production
-```
+```bash
 npm run build
 ```
 
-### Lints and fixes files
-```
+## Checks
+
+```bash
 npm run lint
+npm run typecheck
+npm run test:e2e   # Playwright smoke tests against the built /out directory
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Deployment
+
+Pushing to `main` triggers `.github/workflows/deploy-pages.yml`, which builds the static
+export and deploys it to GitHub Pages. The custom domain is configured via `public/CNAME`.
+
+## Content
+
+All page content lives in a single typed source of truth: [`src/lib/content.ts`](src/lib/content.ts).
