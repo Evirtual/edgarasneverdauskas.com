@@ -2,7 +2,8 @@
 // Playwright/Chromium at exact pixel sizes, then writes PNGs to /public.
 // Not part of the app build — run manually with `node scripts/generate-assets.mjs`.
 import { chromium } from "@playwright/test";
-import { writeFileSync, mkdirSync } from "node:fs";
+import pngToIco from "png-to-ico";
+import { writeFileSync, mkdirSync, rmSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
@@ -97,19 +98,33 @@ await shot(ogHtml(), { width: 1200, height: 630 }, "og-image.png");
 
 await browser.close();
 
+const icoBuffer = await pngToIco([
+  path.join(publicDir, "favicon-16x16.png"),
+  path.join(publicDir, "favicon-32x32.png"),
+  path.join(publicDir, "favicon-master-64.png"),
+]);
+writeFileSync(path.join(publicDir, "favicon.ico"), icoBuffer);
+rmSync(path.join(publicDir, "favicon-master-64.png"), { force: true });
+
 writeFileSync(
   path.join(publicDir, "site.webmanifest"),
   JSON.stringify(
     {
+      id: "/",
       name: "Edgaras Neverdauskas — Senior Product Engineer",
       short_name: "Edgaras Neverdauskas",
-      icons: [
-        { src: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
-        { src: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png" },
-      ],
+      description:
+        "Senior Product Engineer building modern web, AI, fintech and Web3 products with React, TypeScript and Next.js.",
+      start_url: "/",
+      scope: "/",
+      display: "standalone",
+      orientation: "portrait-primary",
       theme_color: "#0a0b0c",
       background_color: "#0a0b0c",
-      display: "standalone",
+      icons: [
+        { src: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png", purpose: "any" },
+        { src: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png", purpose: "any" },
+      ],
     },
     null,
     2

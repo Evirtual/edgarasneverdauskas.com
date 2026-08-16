@@ -47,6 +47,14 @@ export function buildMetadata(overrides: Partial<Metadata> = {}): Metadata {
       shortcut: ["/favicon.ico"],
     },
     manifest: "/site.webmanifest",
+    appleWebApp: {
+      capable: true,
+      title: site.name,
+      statusBarStyle: "black-translucent",
+    },
+    formatDetection: {
+      telephone: false,
+    },
     ...overrides,
   };
 }

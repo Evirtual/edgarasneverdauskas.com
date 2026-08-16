@@ -7,7 +7,7 @@ export const site = {
   email: "contact@edgarasneverdauskas.com",
   phone: "+855 81 680 954",
   url: "https://edgarasneverdauskas.com",
-  linkedin: "https://kh.linkedin.com/in/edgarasneverdauskas",
+  linkedin: "https://linkedin.com/in/edgarasneverdauskas",
   github: "https://github.com/Evirtual",
   cvPath: "/Edgaras_Neverdauskas_CV.pdf",
   stack: ["React", "TypeScript", "Next.js", "AI", "Web3", "Fintech"],

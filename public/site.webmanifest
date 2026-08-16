@@ -1,19 +1,26 @@
 {
+  "id": "/",
   "name": "Edgaras Neverdauskas — Senior Product Engineer",
   "short_name": "Edgaras Neverdauskas",
+  "description": "Senior Product Engineer building modern web, AI, fintech and Web3 products with React, TypeScript and Next.js.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#0a0b0c",
+  "background_color": "#0a0b0c",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/android-chrome-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     }
-  ],
-  "theme_color": "#0a0b0c",
-  "background_color": "#0a0b0c",
-  "display": "standalone"
+  ]
 }

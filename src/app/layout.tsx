@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
@@ -6,8 +6,15 @@ import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/content";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BottomNav from "@/components/BottomNav";
+import RegisterServiceWorker from "@/components/RegisterServiceWorker";
 
 export const metadata: Metadata = buildMetadata();
+
+export const viewport: Viewport = {
+  themeColor: "#0a0b0c",
+  colorScheme: "dark",
+};
 
 const personJsonLd = {
   "@context": "https://schema.org",
@@ -46,7 +53,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </head>
-      <body>
+      <body className="pb-14 md:pb-0">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-[var(--color-accent)] focus:px-4 focus:py-2 focus:text-[var(--color-bg)] focus:font-medium"
@@ -56,6 +63,8 @@ export default function RootLayout({
         <Header />
         <main id="main">{children}</main>
         <Footer />
+        <BottomNav />
+        <RegisterServiceWorker />
       </body>
     </html>
   );

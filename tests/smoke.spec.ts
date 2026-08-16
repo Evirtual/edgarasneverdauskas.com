@@ -15,13 +15,20 @@ test("home page loads with no console errors", async ({ page }) => {
 
 test("nav links scroll to sections", async ({ page }) => {
   await page.goto("/");
-  const menuButton = page.getByRole("button", { name: "Open menu" });
-  if (await menuButton.isVisible()) {
-    await menuButton.click();
-  }
-  await page.locator("header").getByRole("link", { name: "Work", exact: true }).click();
+  // Desktop uses the header nav; mobile uses the fixed bottom tab bar.
+  await page.locator('a[href="/#work"]:visible').first().click();
   await expect(page).toHaveURL(/#work/);
   await expect(page.getByRole("heading", { name: "Products I've built and shipped" })).toBeVisible();
+});
+
+test("mobile bottom nav is visible and desktop header nav is hidden on mobile", async ({
+  page,
+  isMobile,
+}) => {
+  test.skip(!isMobile, "mobile-only check");
+  await page.goto("/");
+  await expect(page.getByRole("navigation", { name: "Primary" })).toBeVisible();
+  await expect(page.locator("header nav")).toBeHidden();
 });
 
 test("selected work links to a working case study page", async ({ page }) => {
