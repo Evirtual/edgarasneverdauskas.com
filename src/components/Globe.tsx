@@ -110,8 +110,10 @@ export default function Globe() {
       const frontAccent: (Path2D | null)[] = new Array(BUCKETS).fill(null);
 
       for (const point of points) {
-        const rx = point.x * cosA + point.z * sinA;
-        const rz = -point.x * sinA + point.z * cosA;
+        // Screen x is negated relative to the rotated x so that east falls to
+        // the right, as on a globe viewed from outside.
+        const rx = point.z * sinA - point.x * cosA;
+        const rz = point.x * sinA + point.z * cosA;
         const ry = point.y * cosT - rz * sinT;
         const depth = point.y * sinT + rz * cosT;
         const isFront = depth > 0;
@@ -154,8 +156,8 @@ export default function Globe() {
       paintBuckets(frontAccent, accent);
 
       // Home marker — a slow pulse while it faces the viewer.
-      const hx = HOME.x * cosA + HOME.z * sinA;
-      const hz = -HOME.x * sinA + HOME.z * cosA;
+      const hx = HOME.z * sinA - HOME.x * cosA;
+      const hz = HOME.x * sinA + HOME.z * cosA;
       const hy = HOME.y * cosT - hz * sinT;
       const hDepth = HOME.y * sinT + hz * cosT;
 
@@ -163,17 +165,35 @@ export default function Globe() {
         const px = center + hx * radius;
         const py = center - hy * radius;
         const [r, g, b] = accent;
-        const pulse = reduceMotion ? 0.5 : (time / 2400) % 1;
+        // Fade out only right at the limb, so the marker stays legible for
+        // most of the time it is turned towards the viewer.
+        const facing = Math.min(1, hDepth * 3);
 
-        ctx.strokeStyle = `rgba(${r},${g},${b},${(1 - pulse) * 0.5 * hDepth})`;
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.arc(px, py, 3 + pulse * 12, 0, Math.PI * 2);
-        ctx.stroke();
+        // Two radar pings, half a cycle apart, so one is always expanding.
+        const phase = reduceMotion ? 0.35 : (time / 2200) % 1;
+        for (const offset of [0, 0.5]) {
+          const p = (phase + offset) % 1;
+          ctx.strokeStyle = `rgba(${r},${g},${b},${(1 - p) * 0.45 * facing})`;
+          ctx.lineWidth = 1.2;
+          ctx.beginPath();
+          ctx.arc(px, py, 3.5 + p * 17, 0, Math.PI * 2);
+          ctx.stroke();
+          if (reduceMotion) break;
+        }
 
-        ctx.fillStyle = `rgba(${r},${g},${b},${Math.min(1, hDepth + 0.3)})`;
+        const blink = reduceMotion
+          ? 1
+          : 0.45 + 0.55 * (0.5 + 0.5 * Math.sin(time / 450));
+
+        // Soft halo, then the solid core.
+        ctx.fillStyle = `rgba(${r},${g},${b},${0.22 * blink * facing})`;
         ctx.beginPath();
-        ctx.arc(px, py, 2.6, 0, Math.PI * 2);
+        ctx.arc(px, py, 7.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = `rgba(${r},${g},${b},${blink * facing})`;
+        ctx.beginPath();
+        ctx.arc(px, py, 3.2, 0, Math.PI * 2);
         ctx.fill();
       }
 
