@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { buildGlobePoints, latLonToVector } from "@/lib/globe-land";
 
 const SAMPLES = 6000;
+const COMPACT_SAMPLES = 3200;
 const ROTATION_SPEED = 0.16; // radians per second
 const TILT = (-18 * Math.PI) / 180;
 const HOME = latLonToVector(11.56, 104.92); // Phnom Penh
@@ -40,7 +41,11 @@ export default function Globe() {
     if (!context) return;
     const ctx = context;
 
-    const points = buildGlobePoints(SAMPLES);
+    // Below lg the globe is a faint backdrop behind the hero copy, so it can
+    // afford far fewer dots and half the frame rate — worth it on phones.
+    const isCompact = window.matchMedia("(max-width: 1023px)").matches;
+    const points = buildGlobePoints(isCompact ? COMPACT_SAMPLES : SAMPLES);
+    const minFrameMs = isCompact ? 33 : 0;
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
@@ -85,11 +90,11 @@ export default function Globe() {
     }
 
     function draw(time: number) {
+      frame = requestAnimationFrame(draw);
+
       if (!size) resize();
-      if (!size) {
-        frame = requestAnimationFrame(draw);
-        return;
-      }
+      if (!size) return;
+      if (lastTime && time - lastTime < minFrameMs) return;
 
       const delta = lastTime ? (time - lastTime) / 1000 : 0;
       lastTime = time;
@@ -196,8 +201,6 @@ export default function Globe() {
         ctx.arc(px, py, 3.2, 0, Math.PI * 2);
         ctx.fill();
       }
-
-      frame = requestAnimationFrame(draw);
     }
 
     function start() {

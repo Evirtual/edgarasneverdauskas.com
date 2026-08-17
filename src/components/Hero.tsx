@@ -4,9 +4,9 @@ import { site } from "@/lib/content";
 
 export default function Hero() {
   return (
-    <section className="pt-14 pb-14 md:pt-20 md:pb-16">
-      <Container className="lg:grid lg:grid-cols-[minmax(0,1fr)_380px] lg:items-center lg:gap-12 xl:grid-cols-[minmax(0,1fr)_440px]">
-        <div>
+    <section className="relative overflow-hidden pt-14 pb-14 md:pt-20 md:pb-16">
+      <Container className="relative lg:grid lg:grid-cols-[minmax(0,1fr)_380px] lg:items-center lg:gap-12 xl:grid-cols-[minmax(0,1fr)_440px]">
+        <div className="relative z-10">
           <p className="mb-6 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-accent)]">
             {site.location} — Open to local &amp; remote roles
           </p>
@@ -79,9 +79,10 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hidden lg:flex lg:flex-col lg:items-center lg:gap-4">
+        {/* Faint backdrop behind the copy on small screens, a proper column at lg. */}
+        <div className="pointer-events-none absolute inset-y-0 left-1/2 z-0 flex w-[125%] -translate-x-1/2 items-center opacity-[0.14] lg:static lg:z-auto lg:w-full lg:translate-x-0 lg:flex-col lg:justify-center lg:gap-4 lg:opacity-100">
           <Globe />
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--color-ink-faint)]">
+          <p className="hidden font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--color-ink-faint)] lg:block">
             Phnom Penh — working globally
           </p>
         </div>
