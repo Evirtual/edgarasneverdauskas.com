@@ -19,8 +19,9 @@ export default function Contact() {
           Let&apos;s build something worth shipping.
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-balance text-[var(--color-ink-muted)]">
-          Open to senior product/frontend engineering roles, local in{" "}
-          {site.location} or remote.
+          Open to senior product and frontend engineering roles, and available
+          for product, technical and UI/UX advisory — local in {site.location}{" "}
+          or remote.
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">

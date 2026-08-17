@@ -12,7 +12,67 @@ export const site = {
   cvPath: "/Edgaras_Neverdauskas_CV.pdf",
   stack: ["React", "TypeScript", "Next.js", "AI", "Web3", "Fintech"],
   yearsExperience: "10+",
+  // Signals both paths: employment and advisory work.
+  availability: "Open to senior roles & advisory work",
 };
+
+export type Service = {
+  title: string;
+  format: string;
+  summary: string;
+  points: string[];
+};
+
+export const services: Service[] = [
+  {
+    title: "Product & technical direction",
+    format: "Session or ongoing",
+    summary:
+      "Turning a rough idea into a scoped, buildable plan — what to build first, what to defer, and an architecture that won't need unpicking in six months.",
+    points: [
+      "Scope and roadmap shaping",
+      "Architecture and stack decisions",
+      "Build vs buy trade-offs",
+      "Realistic delivery planning",
+    ],
+  },
+  {
+    title: "Frontend & UX review",
+    format: "Fixed-scope audit",
+    summary:
+      "A structured review of a product you already have: where the interface loses people, where it feels slow, and what is worth fixing first.",
+    points: [
+      "Usability and flow audit",
+      "Performance and load review",
+      "Accessibility and responsive checks",
+      "Prioritised list of fixes",
+    ],
+  },
+  {
+    title: "Web3 & fintech engineering",
+    format: "Advisory or hands-on",
+    summary:
+      "Help with the parts that carry real money — wallet flows, on-chain state, and interfaces that have to stay correct while everything underneath them moves.",
+    points: [
+      "Wallet and transaction flows",
+      "On-chain data and subgraphs",
+      "Multi-chain rollout",
+      "Reviewing existing DeFi frontends",
+    ],
+  },
+  {
+    title: "AI-assisted delivery",
+    format: "Workshop or ongoing",
+    summary:
+      "Helping a team get genuinely faster with AI tooling — where it earns its place in the workflow, and where it quietly costs you quality.",
+    points: [
+      "Tooling and workflow setup",
+      "Review and quality guardrails",
+      "Where not to use it",
+      "Team onboarding",
+    ],
+  },
+];
 
 export type ProjectLink = {
   label: string;
@@ -78,6 +138,43 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "atunicorn",
+    name: "@unicorn",
+    logo: "/logos/atunicorn.png",
+    role: "Founder & Product Engineer",
+    period: "Apr 2022 — Present",
+    status: "Long-running product",
+    summary:
+      "A long-running social and self-expression product, in continuous iteration since 2022 — product direction, authentication, profiles, posts and media, built and rebuilt as the platform matured.",
+    problem:
+      "Building a consumer social product that survives multiple technology and design iterations without losing continuity of product direction or user data.",
+    ownership: [
+      "Product direction and UX across multiple platform iterations",
+      "Authentication, user profiles, posts and media upload flows",
+      "Responsive application architecture across web and native-web surfaces",
+      "Ongoing iteration and modernization of the technology stack",
+    ],
+    challenges: [
+      "Maintaining product continuity through several rounds of architecture and stack changes",
+      "Building responsive interfaces that work consistently across web and React Native Web surfaces",
+      "Iterating on a live consumer product without a dedicated backend team",
+    ],
+    decisions: [
+      "Firebase as a managed backend to keep infrastructure overhead low for a founder-run product",
+      "React Native Web to share application logic between web and native-leaning surfaces",
+      "Progressive modernization of the stack (Next.js, styled-components) rather than a disruptive rewrite",
+    ],
+    tech: [
+      "Next.js",
+      "React",
+      "Firebase",
+      "React Native Web",
+      "styled-components",
+    ],
+    links: [{ label: "Live product", url: "https://atunicorn.io" }],
+    featured: true,
+  },
+  {
     slug: "liquidloans-fetch-oracle",
     name: "LiquidLoans / Fetch Oracle",
     logo: "/logos/liquidloans.png",
@@ -121,43 +218,6 @@ export const projects: Project[] = [
       { label: "Fetch Oracle dashboard", url: "https://go.fetchoracle.com/#/" },
     ],
     note: "Private professional engagement — source is not publicly available.",
-    featured: true,
-  },
-  {
-    slug: "atunicorn",
-    name: "@unicorn",
-    logo: "/logos/atunicorn.png",
-    role: "Founder & Product Engineer",
-    period: "Apr 2022 — Present",
-    status: "Long-running product",
-    summary:
-      "A long-running social and self-expression product, in continuous iteration since 2022 — product direction, authentication, profiles, posts and media, built and rebuilt as the platform matured.",
-    problem:
-      "Building a consumer social product that survives multiple technology and design iterations without losing continuity of product direction or user data.",
-    ownership: [
-      "Product direction and UX across multiple platform iterations",
-      "Authentication, user profiles, posts and media upload flows",
-      "Responsive application architecture across web and native-web surfaces",
-      "Ongoing iteration and modernization of the technology stack",
-    ],
-    challenges: [
-      "Maintaining product continuity through several rounds of architecture and stack changes",
-      "Building responsive interfaces that work consistently across web and React Native Web surfaces",
-      "Iterating on a live consumer product without a dedicated backend team",
-    ],
-    decisions: [
-      "Firebase as a managed backend to keep infrastructure overhead low for a founder-run product",
-      "React Native Web to share application logic between web and native-leaning surfaces",
-      "Progressive modernization of the stack (Next.js, styled-components) rather than a disruptive rewrite",
-    ],
-    tech: [
-      "Next.js",
-      "React",
-      "Firebase",
-      "React Native Web",
-      "styled-components",
-    ],
-    links: [{ label: "Live product", url: "https://atunicorn.io" }],
     featured: true,
   },
   {

@@ -18,6 +18,27 @@ const tabs = [
     ),
   },
   {
+    id: "advisory",
+    label: "Advisory",
+    href: "/#advisory",
+    icon: (
+      <>
+        <path
+          d="M10 3.4a4.4 4.4 0 0 0-2.7 7.9c.35.27.55.7.55 1.15v.25h4.3v-.25c0-.45.2-.88.55-1.15A4.4 4.4 0 0 0 10 3.4Z"
+          stroke="currentColor"
+          strokeWidth="1.4"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M8.5 15.3h3M9 17h2"
+          stroke="currentColor"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+        />
+      </>
+    ),
+  },
+  {
     id: "experience",
     label: "Experience",
     href: "/#experience",
@@ -84,7 +105,7 @@ export default function BottomNav() {
       className="fixed inset-x-0 bottom-0 z-40 border-t border-[var(--color-border)] bg-[var(--color-bg)]/95 backdrop-blur md:hidden"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
-      <ul className="grid grid-cols-5">
+      <ul className="grid grid-cols-6">
         {tabs.map((tab) => (
           <li key={tab.id}>
             <a

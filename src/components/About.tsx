@@ -3,7 +3,7 @@ import { site } from "@/lib/content";
 
 export default function About() {
   return (
-    <Section id="about" index="05" eyebrow="About" title="A bit about me">
+    <Section id="about" index="06" eyebrow="About" title="A bit about me">
       <div className="max-w-2xl space-y-5 text-lg leading-relaxed text-[var(--color-ink-muted)]">
         <p>
           I&apos;m a senior product engineer with {site.yearsExperience} years
@@ -19,7 +19,12 @@ export default function About() {
           building than managing the building.
         </p>
         <p>
-          Open to senior local and remote opportunities.
+          These days I split my time between building my own products and
+          advising other teams — usually on product direction, frontend
+          architecture, or working out what is actually worth building next.
+        </p>
+        <p>
+          Open to senior local and remote opportunities, and to advisory work.
         </p>
       </div>
     </Section>

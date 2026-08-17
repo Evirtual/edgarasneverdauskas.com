@@ -6,6 +6,7 @@ import { site } from "@/lib/content";
 
 const navLinks = [
   { href: "/#work", label: "Work" },
+  { href: "/#advisory", label: "Advisory" },
   { href: "/#experience", label: "Experience" },
   { href: "/#about", label: "About" },
   { href: "/#contact", label: "Contact" },

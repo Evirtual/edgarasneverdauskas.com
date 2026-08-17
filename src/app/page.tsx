@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import SelectedWork from "@/components/SelectedWork";
+import Advisory from "@/components/Advisory";
 import Experience from "@/components/Experience";
 import AIWorkflow from "@/components/AIWorkflow";
 import Expertise from "@/components/Expertise";
@@ -11,6 +12,7 @@ export default function Home() {
     <>
       <Hero />
       <SelectedWork />
+      <Advisory />
       <Experience />
       <AIWorkflow />
       <Expertise />

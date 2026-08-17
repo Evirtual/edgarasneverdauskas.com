@@ -8,7 +8,7 @@ export default function Hero() {
       <Container className="relative lg:grid lg:grid-cols-[minmax(0,1fr)_380px] lg:items-center lg:gap-12 xl:grid-cols-[minmax(0,1fr)_440px]">
         <div className="relative z-10">
           <p className="mb-6 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-accent)]">
-            {site.location} — Open to local &amp; remote roles
+            {site.location} — {site.availability}
           </p>
 
           <h1 className="max-w-4xl text-balance text-4xl font-medium leading-[1.1] tracking-tight text-[var(--color-ink)] sm:text-5xl md:text-6xl">
@@ -25,7 +25,8 @@ export default function Hero() {
           <p className="mt-4 max-w-2xl text-base text-[var(--color-ink-muted)]">
             {site.yearsExperience} years in software development, building React
             and TypeScript products across fintech, Web3 and AI-enabled
-            workflows.
+            workflows — and advising teams on product direction, frontend
+            architecture and delivery.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-x-3 gap-y-2 font-mono text-sm text-[var(--color-ink-faint)]">
@@ -45,6 +46,12 @@ export default function Hero() {
               className="rounded-full bg-[var(--color-accent)] px-6 py-3 text-sm font-medium text-[var(--color-accent-ink)] transition-opacity hover:opacity-90"
             >
               View selected work
+            </a>
+            <a
+              href="#advisory"
+              className="rounded-full border border-[var(--color-border-strong)] px-6 py-3 text-sm text-[var(--color-ink)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+            >
+              How I can help
             </a>
             <a
               href={site.cvPath}
