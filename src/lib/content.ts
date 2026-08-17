@@ -116,7 +116,10 @@ export const projects: Project[] = [
       "ERC-20",
       "Multi-chain",
     ],
-    links: [{ label: "Live product", url: "https://go.liquidloans.io/#/" }],
+    links: [
+      { label: "LiquidLoans", url: "https://go.liquidloans.io/#/" },
+      { label: "Fetch Oracle dashboard", url: "https://go.fetchoracle.com/#/" },
+    ],
     note: "Private professional engagement — source is not publicly available.",
     featured: true,
   },
