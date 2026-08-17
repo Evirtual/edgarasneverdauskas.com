@@ -26,10 +26,8 @@ function getServerSnapshot(): Theme {
 function setTheme(theme: Theme) {
   document.documentElement.setAttribute("data-theme", theme);
   localStorage.setItem("theme", theme);
-  const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) {
-    meta.setAttribute("content", theme === "light" ? "#ffffff" : "#0a0b0c");
-  }
+  // theme-color is deliberately left alone: it is the brand accent (set in
+  // layout.tsx) so the installed PWA keeps a teal status bar in both themes.
 }
 
 export default function ThemeToggle() {
