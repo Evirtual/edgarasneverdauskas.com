@@ -237,7 +237,6 @@ export const otherWork: OtherWork[] = [
     name: "Tokenization boilerplate",
     description:
       "Independent exploration of tokenization patterns and infrastructure in TypeScript.",
-    url: "https://evirtual.github.io/tokenization-boilerplate/",
   },
   {
     name: "PhotoRank AI",
