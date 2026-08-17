@@ -12,7 +12,12 @@ import RegisterServiceWorker from "@/components/RegisterServiceWorker";
 export const metadata: Metadata = buildMetadata();
 
 export const viewport: Viewport = {
-  themeColor: "#5eead4",
+  // Matches the page background so the installed app's status bar blends into
+  // the site rather than sitting on it as a separate band.
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0b0c" },
+  ],
   colorScheme: "light dark",
 };
 

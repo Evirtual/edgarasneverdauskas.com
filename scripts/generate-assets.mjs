@@ -34,16 +34,23 @@ function markSvgInner() {
   `;
 }
 
-function markHtml(size) {
-  const radius = Math.round(size * 0.22);
-  // Glyph fills nearly the full icon, edge to edge — the mark should read
-  // clearly as content, not float in a mostly-empty square.
-  const glyphWidth = Math.round(size * 0.92);
+// Icons are full-bleed on purpose: the background reaches every edge with no
+// rounding and no transparency. Android treats an icon with transparent
+// corners as a legacy icon and drops it onto a white circle, which is what
+// produced the white ring around the installed app icon. Filling the square
+// lets the launcher's own mask (circle, squircle, teardrop) become the icon
+// shape, the way a native icon behaves.
+//
+// glyphPct trades presence against mask safety. Maskable icons may be cropped
+// to a centred circle of 80% diameter, so app icons stay small enough for the
+// mark's diagonal to clear that; favicons are never masked and can run larger.
+function markHtml(size, glyphPct) {
+  const glyphWidth = Math.round(size * glyphPct);
   const glyphHeight = Math.round(glyphWidth * (24 / 38));
   return `<!doctype html><html><head><meta charset="utf-8"><style>
     html,body{margin:0;padding:0;background:transparent;}
     .mark{
-      width:${size}px;height:${size}px;border-radius:${radius}px;
+      width:${size}px;height:${size}px;
       background:${BG};
       display:flex;align-items:center;justify-content:center;
       box-sizing:border-box;
@@ -117,13 +124,20 @@ async function shot(html, size, outFile) {
   await page.close();
 }
 
-// Favicon-family PNGs (transparent background outside rounded square)
-await shot(markHtml(16), { width: 16, height: 16 }, "favicon-16x16.png");
-await shot(markHtml(32), { width: 32, height: 32 }, "favicon-32x32.png");
-await shot(markHtml(180), { width: 180, height: 180 }, "apple-touch-icon.png");
-await shot(markHtml(192), { width: 192, height: 192 }, "android-chrome-192x192.png");
-await shot(markHtml(512), { width: 512, height: 512 }, "android-chrome-512x512.png");
-await shot(markHtml(64), { width: 64, height: 64 }, "favicon-master-64.png");
+// Favicons and the .ico master — never masked, so the mark can run large.
+const FAVICON_GLYPH = 0.86;
+await shot(markHtml(16, FAVICON_GLYPH), { width: 16, height: 16 }, "favicon-16x16.png");
+await shot(markHtml(32, FAVICON_GLYPH), { width: 32, height: 32 }, "favicon-32x32.png");
+await shot(markHtml(64, FAVICON_GLYPH), { width: 64, height: 64 }, "favicon-master-64.png");
+
+// iOS applies a rounded-square mask rather than a circle, so it can take more.
+await shot(markHtml(180, 0.74), { width: 180, height: 180 }, "apple-touch-icon.png");
+
+// Android home-screen icons, declared "any maskable" — sized to survive a
+// circular crop.
+const MASKABLE_GLYPH = 0.64;
+await shot(markHtml(192, MASKABLE_GLYPH), { width: 192, height: 192 }, "android-chrome-192x192.png");
+await shot(markHtml(512, MASKABLE_GLYPH), { width: 512, height: 512 }, "android-chrome-512x512.png");
 
 // OG image
 await shot(ogHtml(), { width: 1200, height: 630 }, "og-image.png");
@@ -153,9 +167,11 @@ writeFileSync(
       orientation: "portrait-primary",
       theme_color: "#0a0b0c",
       background_color: "#0a0b0c",
+      // The icons are full-bleed with a safe centre, so one set serves both
+      // purposes — no separate maskable files needed.
       icons: [
-        { src: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png", purpose: "any" },
-        { src: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png", purpose: "any" },
+        { src: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png", purpose: "any maskable" },
+        { src: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png", purpose: "any maskable" },
       ],
     },
     null,
