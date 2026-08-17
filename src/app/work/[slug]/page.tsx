@@ -80,9 +80,20 @@ export default async function ProjectPage({
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-accent)]">
           {project.status}
         </p>
-        <h1 className="mt-3 text-3xl md:text-5xl font-medium tracking-tight text-[var(--color-ink)]">
-          {project.name}
-        </h1>
+        <div className="mt-3 flex items-center gap-4">
+          {project.logo && (
+            <img
+              src={project.logo}
+              alt=""
+              width={56}
+              height={56}
+              className="h-12 w-12 md:h-14 md:w-14 shrink-0 object-contain"
+            />
+          )}
+          <h1 className="text-3xl md:text-5xl font-medium tracking-tight text-[var(--color-ink)]">
+            {project.name}
+          </h1>
+        </div>
         <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-[var(--color-ink-muted)]">
           <span>{project.role}</span>
           <span className="text-[var(--color-border-strong)]">·</span>

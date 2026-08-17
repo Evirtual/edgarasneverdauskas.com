@@ -21,9 +21,21 @@ export default function SelectedWork() {
           >
             <div>
               <div className="flex items-start justify-between gap-4">
-                <h3 className="text-xl font-medium text-[var(--color-ink)]">
-                  {project.name}
-                </h3>
+                <div className="flex items-center gap-3">
+                  {project.logo && (
+                    <img
+                      src={project.logo}
+                      alt=""
+                      width={32}
+                      height={32}
+                      loading="lazy"
+                      className="h-8 w-8 shrink-0 object-contain"
+                    />
+                  )}
+                  <h3 className="text-xl font-medium text-[var(--color-ink)]">
+                    {project.name}
+                  </h3>
+                </div>
                 <span className="whitespace-nowrap font-mono text-xs text-[var(--color-ink-faint)]">
                   {project.period}
                 </span>

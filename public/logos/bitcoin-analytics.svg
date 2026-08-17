@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="rainbow" x1="6" y1="0" x2="58" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#22c55e" />
+    </linearGradient>
+  </defs>
+
+  <!-- Symmetric top semicircle arc (transparent background) -->
+  <path
+    d="M 6 44 A 26 26 0 0 1 58 44"
+    fill="none"
+    stroke="url(#rainbow)"
+    stroke-width="10"
+    stroke-linecap="round"
+  />
+
+  <!-- Accent dots (clean, no text) -->
+  <circle cx="19" cy="21.5" r="3.6" fill="#f59e0b" />
+  <circle cx="45" cy="21.5" r="3.6" fill="#22c55e" />
+
+  <!-- Knob marker (centered at the arc midpoint) -->
+  <circle cx="32" cy="18" r="6.2" fill="#ffffff" stroke="#0b1020" stroke-width="1.2" />
+  <circle cx="32" cy="18" r="3.1" fill="#0b1020" />
+</svg>

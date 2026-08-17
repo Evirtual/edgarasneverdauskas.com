@@ -5,7 +5,14 @@ export default function Contact() {
   return (
     <Section id="contact" className="pb-16 md:pb-20">
       <div className="rounded-3xl border border-[var(--color-border)] bg-[var(--color-bg-raised)] px-6 py-14 md:px-16 md:py-20 text-center">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-accent)]">
+        <img
+          src="/avatar.jpg"
+          alt={site.name}
+          width={88}
+          height={88}
+          className="mx-auto h-20 w-20 md:h-22 md:w-22 rounded-full border border-[var(--color-border-strong)] object-cover"
+        />
+        <p className="mt-6 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-accent)]">
           Get in touch
         </p>
         <h2 className="mx-auto mt-4 max-w-2xl text-balance text-3xl md:text-4xl font-medium tracking-tight text-[var(--color-ink)]">

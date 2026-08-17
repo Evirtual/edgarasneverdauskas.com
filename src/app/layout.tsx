@@ -12,10 +12,7 @@ import RegisterServiceWorker from "@/components/RegisterServiceWorker";
 export const metadata: Metadata = buildMetadata();
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0b0c" },
-  ],
+  themeColor: "#5eead4",
   colorScheme: "light dark",
 };
 

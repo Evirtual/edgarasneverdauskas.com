@@ -22,6 +22,7 @@ export type ProjectLink = {
 export type Project = {
   slug: string;
   name: string;
+  logo?: string;
   role: string;
   period: string;
   status: string;
@@ -40,6 +41,7 @@ export const projects: Project[] = [
   {
     slug: "ampuno",
     name: "Ampuno",
+    logo: "/logos/ampuno.png",
     role: "Founder & Product Engineer",
     period: "Jul 2026 — Present",
     status: "Actively developed",
@@ -78,6 +80,7 @@ export const projects: Project[] = [
   {
     slug: "liquidloans-fetch-oracle",
     name: "LiquidLoans / Fetch Oracle",
+    logo: "/logos/liquidloans.png",
     role: "Frontend Engineer",
     period: "2022 — 2026",
     status: "Professional engagement",
@@ -113,13 +116,14 @@ export const projects: Project[] = [
       "ERC-20",
       "Multi-chain",
     ],
-    links: [],
+    links: [{ label: "Live product", url: "https://go.liquidloans.io/#/" }],
     note: "Private professional engagement — source is not publicly available.",
     featured: true,
   },
   {
     slug: "atunicorn",
     name: "@unicorn",
+    logo: "/logos/atunicorn.png",
     role: "Founder & Product Engineer",
     period: "Apr 2022 — Present",
     status: "Long-running product",
@@ -156,6 +160,7 @@ export const projects: Project[] = [
   {
     slug: "bitcoin-analytics",
     name: "Bitcoin Analytics",
+    logo: "/logos/bitcoin-analytics.svg",
     role: "Independent Product Engineer",
     period: "2025 — 2026",
     status: "Independent product",
@@ -187,6 +192,7 @@ export const projects: Project[] = [
   {
     slug: "social-blockchain-network",
     name: "Social Blockchain Network",
+    logo: "/logos/social-blockchain-network.svg",
     role: "Independent Product Engineer",
     period: "2025 — 2026",
     status: "Testnet prototype",
@@ -215,42 +221,6 @@ export const projects: Project[] = [
     note: "Runs on public testnets (Base Sepolia, Ethereum Sepolia, BSC Testnet) — no real funds involved.",
     featured: true,
   },
-  {
-    slug: "photorank-ai",
-    name: "PhotoRank AI",
-    role: "Independent Product Engineer",
-    period: "2026",
-    status: "Independent product",
-    summary:
-      "An AI-powered image-ranking product with a mobile-first UX, vision-model analysis, and Stripe-based checkout — designed with a privacy-conscious, no-permanent-storage architecture.",
-    problem:
-      "Letting people rank and compare their own photos using AI analysis, without the product becoming a long-term store of their personal images.",
-    ownership: [
-      "Mobile-first Next.js application architecture",
-      "Integration with OpenAI vision-capable models for configurable image analysis",
-      "Stripe Checkout, payment verification and webhook handling",
-      "Redis-compatible checkout ledger and temporary image-processing pipeline",
-    ],
-    challenges: [
-      "Designing an image pipeline that supports AI analysis without persisting uploaded photos",
-      "Verifying Stripe payments and webhooks reliably before releasing paid analysis results",
-      "Keeping vision-model analysis configurable across different ranking packages",
-    ],
-    decisions: [
-      "Temporary, non-persistent image handling as a deliberate privacy constraint rather than a default backend pattern",
-      "A Redis-compatible ledger to track checkout/entitlement state without a full database",
-      "Mobile-first layout given the primary use case: uploading photos from a phone",
-    ],
-    tech: [
-      "Next.js",
-      "OpenAI vision models",
-      "Stripe Checkout",
-      "Webhooks",
-      "Redis-compatible storage",
-    ],
-    links: [],
-    featured: true,
-  },
 ];
 
 export type OtherWork = {
@@ -265,6 +235,11 @@ export const otherWork: OtherWork[] = [
     description:
       "Independent exploration of tokenization patterns and infrastructure in TypeScript.",
     url: "https://evirtual.github.io/tokenization-boilerplate/",
+  },
+  {
+    name: "PhotoRank AI",
+    description:
+      "An AI-powered image-ranking product with a mobile-first UX, vision-model analysis, and Stripe-based checkout.",
   },
 ];
 
