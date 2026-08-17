@@ -80,7 +80,7 @@ export default function Hero() {
         </div>
 
         {/* Faint backdrop behind the copy on small screens, a proper column at lg. */}
-        <div className="pointer-events-none absolute inset-y-0 left-1/2 z-0 flex w-[125%] -translate-x-1/2 items-center opacity-[0.14] lg:static lg:z-auto lg:w-full lg:translate-x-0 lg:flex-col lg:justify-center lg:gap-4 lg:opacity-100">
+        <div className="pointer-events-none absolute inset-y-0 left-1/2 z-0 flex w-[125%] -translate-x-1/2 items-center opacity-[0.32] lg:static lg:z-auto lg:w-full lg:translate-x-0 lg:flex-col lg:justify-center lg:gap-4 lg:opacity-100">
           <Globe />
           <p className="hidden font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--color-ink-faint)] lg:block">
             Phnom Penh — working globally
