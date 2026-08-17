@@ -6,9 +6,9 @@ export default function Advisory() {
     <Section
       id="advisory"
       index="02"
-      eyebrow="Advisory & consulting"
+      eyebrow="Advice & second opinions"
       title="How I can help"
-      description="Alongside building products end to end, I work with founders and teams who need senior product and engineering judgement — for a single decision, a focused review, or ongoing input."
+      description={`I've spent ${site.yearsExperience} years building products — my own and other people's. If you're working on something and want an experienced second opinion, we can look at it together. Often that's a single conversation.`}
     >
       <div className="grid gap-6 md:grid-cols-2">
         {services.map((service) => (
@@ -16,10 +16,7 @@ export default function Advisory() {
             key={service.title}
             className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-raised)] p-6 md:p-8"
           >
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--color-ink-faint)]">
-              {service.format}
-            </p>
-            <h3 className="mt-3 text-xl font-medium text-[var(--color-ink)]">
+            <h3 className="text-xl font-medium text-[var(--color-ink)]">
               {service.title}
             </h3>
 
@@ -48,8 +45,9 @@ export default function Advisory() {
             Not sure which of these you need?
           </p>
           <p className="mt-1 text-sm text-[var(--color-ink-muted)]">
-            Tell me what you&apos;re building and I&apos;ll tell you honestly
-            whether I&apos;m the right person for it.
+            Most people aren&apos;t. Tell me what you&apos;re working on. If I
+            think I can help, we can spend an hour looking at it together — and
+            if I&apos;m not the right person, I&apos;ll say so.
           </p>
         </div>
         <a

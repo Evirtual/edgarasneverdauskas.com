@@ -16,60 +16,58 @@ export const site = {
   availability: "Open to senior roles & advisory work",
 };
 
+// These describe the problems worth thinking through together, not the stack
+// they happen to be built on. No engagement formats are promised here — the
+// shape of any work is decided per conversation, not advertised up front.
 export type Service = {
   title: string;
-  format: string;
   summary: string;
   points: string[];
 };
 
 export const services: Service[] = [
   {
-    title: "Product & technical direction",
-    format: "Session or ongoing",
+    title: "Product Direction",
     summary:
-      "Turning a rough idea into a scoped, buildable plan — what to build first, what to defer, and an architecture that won't need unpicking in six months.",
+      "You have an idea, an MVP, or something already running, and you're not sure what should come next. Product thinking grounded in real experience building and shipping software.",
     points: [
-      "Scope and roadmap shaping",
-      "Architecture and stack decisions",
-      "Build vs buy trade-offs",
-      "Realistic delivery planning",
+      "What the product actually solves, and for whom",
+      "What belongs in the first version, and what can wait",
+      "Features and complexity you don't need",
+      "Whether the current direction still makes sense",
     ],
   },
   {
-    title: "Frontend & UX review",
-    format: "Fixed-scope audit",
+    title: "UI/UX & Product Review",
     summary:
-      "A structured review of a product you already have: where the interface loses people, where it feels slow, and what is worth fixing first.",
+      "We go through something together — a site, an app, a user flow, a Figma file. I look at it as a user would, and from the perspective of someone who understands what it takes to build it.",
     points: [
-      "Usability and flow audit",
-      "Performance and load review",
-      "Accessibility and responsive checks",
-      "Prioritised list of fixes",
+      "User flows and steps that could be removed",
+      "Where the interface is likely to lose people",
+      "Information hierarchy and simplification",
+      "How it holds up on a phone",
     ],
   },
   {
-    title: "Web3 & fintech engineering",
-    format: "Advisory or hands-on",
+    title: "Technical Approach",
     summary:
-      "Help with the parts that carry real money — wallet flows, on-chain state, and interfaces that have to stay correct while everything underneath them moves.",
+      "You know roughly what you want to build and want another perspective before committing real time or money. Whether I end up building any of it is a separate question.",
     points: [
-      "Wallet and transaction flows",
-      "On-chain data and subgraphs",
-      "Multi-chain rollout",
-      "Reviewing existing DeFi frontends",
+      "Feasibility, and how hard this really is",
+      "Implementation approach and practical architecture",
+      "Build it, or use something that already exists",
+      "Where something is being over-engineered",
     ],
   },
   {
-    title: "AI-assisted delivery",
-    format: "Workshop or ongoing",
+    title: "AI & Product Opportunities",
     summary:
-      "Helping a team get genuinely faster with AI tooling — where it earns its place in the workflow, and where it quietly costs you quality.",
+      "Where AI genuinely improves what you're building or how you work — and, just as often, where it only adds cost and risk.",
     points: [
-      "Tooling and workflow setup",
-      "Review and quality guardrails",
-      "Where not to use it",
-      "Team onboarding",
+      "Practical AI features worth building",
+      "Where AI is unnecessary",
+      "Ideas that are far cheaper to build than they used to be",
+      "Judging an AI idea on product and technical grounds",
     ],
   },
 ];

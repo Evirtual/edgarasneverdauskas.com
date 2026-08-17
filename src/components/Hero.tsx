@@ -5,13 +5,15 @@ import { site } from "@/lib/content";
 export default function Hero() {
   return (
     <section className="relative overflow-hidden pt-14 pb-14 md:pt-20 md:pb-16">
-      <Container className="relative lg:grid lg:grid-cols-[minmax(0,1fr)_380px] lg:items-center lg:gap-12 xl:grid-cols-[minmax(0,1fr)_440px]">
+      <Container className="relative lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:items-center lg:gap-12 xl:grid-cols-[minmax(0,1fr)_380px]">
         <div className="relative z-10">
           <p className="mb-6 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-accent)]">
             {site.location} — {site.availability}
           </p>
 
-          <h1 className="max-w-4xl text-balance text-4xl font-medium leading-[1.1] tracking-tight text-[var(--color-ink)] sm:text-5xl md:text-6xl">
+          {/* Sizes step down at lg, where the globe column takes width from
+              this one, so the name stays on a single line on desktop. */}
+          <h1 className="max-w-4xl text-balance text-4xl font-medium leading-[1.1] tracking-tight text-[var(--color-ink)] sm:text-5xl md:text-6xl lg:text-[3.25rem] xl:text-6xl">
             {site.name}
           </h1>
           <p className="mt-3 text-xl md:text-2xl text-[var(--color-ink-muted)]">
