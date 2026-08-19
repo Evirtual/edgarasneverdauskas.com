@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Self-Aware Writing">
+  <rect width="512" height="512" rx="96" fill="#0c0c0d"/>
+  <g fill="none" stroke="#f3ede1" stroke-linecap="round" stroke-linejoin="round" transform="translate(256 256) scale(0.82) translate(-256 -256)">
+    <path d="M128 116c52-12 96 2 128 34 32-32 76-46 128-34v236c-51-9-94 5-128 39-34-34-77-48-128-39V116Z" stroke-width="19"/>
+    <path d="M92 151v226c68-12 121 7 164 48 43-41 96-60 164-48V151" stroke-width="16"/>
+    <path d="M115 379c55-4 101 13 141 47 40-34 86-51 141-47" stroke-width="11"/>
+  </g>
+  <g fill="none" stroke="#c8922e" stroke-linecap="round" stroke-linejoin="round" transform="translate(256 256) scale(0.82) translate(-256 -256)">
+    <path d="M162 253c29-34 60-51 94-51s65 17 94 51c-29 34-60 51-94 51s-65-17-94-51Z" stroke-width="16"/>
+    <ellipse cx="256" cy="253" rx="35" ry="49" stroke-width="14"/>
+    <circle cx="256" cy="253" r="15" fill="#c8922e" stroke="none"/>
+  </g>
+</svg>

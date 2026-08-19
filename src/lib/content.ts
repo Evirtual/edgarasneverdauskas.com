@@ -136,6 +136,53 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "self-aware-writing",
+    name: "Self-Aware Writing",
+    logo: "/logos/selfawarewriting.svg",
+    role: "Author & Product Engineer",
+    period: "Aug 2026 — Present",
+    status: "In progress",
+    summary:
+      "A living book that notices you while you read it — the text tracks where you are, remembers where you stopped, and is honest about the chapters that don't exist yet.",
+    problem:
+      "Most writing on the web is a static page dropped into a generic reading UI. Here the reader's own attention is the subject, so the interface has to know about progress, memory and return visits — without accounts, tracking, or anything leaving the browser.",
+    ownership: [
+      "Concept, writing and product design — the book and the software are the same artifact",
+      "Astro/TypeScript architecture where a chapter is one Markdown file and the routes, sidebar, page rail, pager and sitemap are all derived from it",
+      "Custom remark/rehype plugins for stanza line breaks and page splitting inside a chapter",
+      "Reader behaviour: theme, reading progress, page tracking, resume-where-you-stopped, installable offline PWA",
+      "Branding, icon and social-card generation, and the type-checked GitHub Pages deploy pipeline",
+    ],
+    challenges: [
+      "Making the text aware of the reader while keeping every piece of that state in localStorage — none of it leaves the browser",
+      "Splitting a chapter into pages at the AST level so the rail, the pager and the progress bar all agree on the same boundaries",
+      "Rebuilding a hand-written site as an Astro project without breaking URLs already indexed and cached by the service worker",
+      "A two-panel desktop book shell that has to collapse into a single readable column on a phone",
+    ],
+    decisions: [
+      "Astro with file-format builds, so the rebuild kept the exact URLs the earlier hand-written site had already published",
+      "One Markdown file per chapter as the single source of truth — adding a chapter is adding a file, with no routing, sidebar or sitemap edits",
+      "A custom markdown processor (remark + rehype) rather than bending the default renderer to the book's typography",
+      "Reader state in localStorage only — no analytics and no accounts behind the idea that the book notices you",
+      "Unwritten chapters shown locked in the sidebar instead of hidden, so the book stays honest about being unfinished",
+    ],
+    tech: [
+      "Astro",
+      "TypeScript",
+      "remark / rehype",
+      "PWA / Service Worker",
+      "Markdown content",
+      "GitHub Actions",
+      "SEO / sitemap",
+    ],
+    links: [
+      { label: "Live product", url: "https://selfawarewriting.com" },
+      { label: "Source", url: "https://github.com/Evirtual/selfawarewriting" },
+    ],
+    note: "Deliberately unfinished — chapters are still being written, and the sidebar shows the ones that haven't happened yet.",
+    featured: true,
+  },
+  {
     slug: "atunicorn",
     name: "@unicorn",
     logo: "/logos/atunicorn.png",
@@ -318,7 +365,7 @@ export const experience: ExperienceEntry[] = [
     location: "Phnom Penh, Cambodia",
     period: "Dec 2025 — Present",
     description:
-      "Building and shipping independent products across AI, data, Web3 and consumer technology, including PhotoRank AI, Bitcoin Analytics, and Web3 experiments.",
+      "Building and shipping independent products across AI, data, Web3 and consumer technology, including Self-Aware Writing, PhotoRank AI, Bitcoin Analytics, and Web3 experiments.",
   },
   {
     role: "Frontend Engineer",
@@ -364,6 +411,7 @@ export const expertise: ExpertiseGroup[] = [
     items: [
       "React",
       "Next.js",
+      "Astro",
       "TypeScript",
       "JavaScript",
       "Vite",
