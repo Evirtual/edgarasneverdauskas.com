@@ -15,7 +15,7 @@ async function bandHash(page: Page) {
     const y = Math.max(0, Math.floor(canvas.height / 2) - 20);
     const { data } = ctx.getImageData(0, y, canvas.width, 40);
     let hash = 0;
-    for (let i = 0; i < data.length; i += 41) hash = (hash * 31 + data[i]) >>> 0;
+    for (let i = 0; i < data.length; i += 41) hash = (hash * 31 + (data[i] ?? 0)) >>> 0;
     return hash;
   });
 }
