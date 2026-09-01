@@ -8,9 +8,9 @@
 //   npm run cv
 //
 // The design follows the portfolio rather than the old PDF: experience is the
-// same rail-and-dot timeline the site renders, products carry the tech chips,
-// and the toolkit closes. Type is Geist Sans/Mono and the palette is the
-// site's own light theme, both read from the project so they cannot drift.
+// same rail-and-dot timeline the site renders, then products, then the
+// toolkit. Type is Geist Sans/Mono and the palette is the site's own light
+// theme, both read from the project so they cannot drift either.
 import { chromium } from "@playwright/test";
 import { mkdtemp, writeFile, rm, readFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
@@ -207,7 +207,7 @@ const html = `<!doctype html>
   }
 
   ul { margin: 3pt 0 0; padding-left: 10pt; }
-  li { font-size: 9pt; color: var(--ink-muted); margin-bottom: 2pt; }
+  li { font-size: 9pt; color: var(--ink-muted); margin-bottom: 1.5pt; }
   li::marker { color: var(--border-strong); }
 
   /* The experience rail, matching the site's Experience section: a continuous

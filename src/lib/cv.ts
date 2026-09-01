@@ -15,20 +15,25 @@ export const summary = {
 // surfaces here as a missing key rather than silently losing its bullets.
 export const experienceBullets: Record<string, string[]> = {
   "Self-employed": [
-    "Build and ship independent software products across AI, data, Web3 and consumer technology, owning architecture, implementation, debugging, testing, deployment and iteration from concept to working product.",
+    "Build and ship independent software products across AI, data, Web3 and consumer technology, owning architecture, implementation, testing and deployment from concept to working product.",
     "Use OpenAI Codex and Claude Code extensively as engineering accelerators while retaining responsibility for product direction, architecture, review, debugging and final quality.",
   ],
   LiquidLoans: [
-    "Built and maintained React/TypeScript DeFi interfaces spanning borrowing, Stability Pool interactions, staking, farming, redemptions and liquidations, with wallet integration, ERC-20 balances, approvals and user-facing transaction states.",
-    "Used wagmi, ethers and GraphQL/subgraphs to power financial dashboards from on-chain data, investigating RPC limits and chain-sync issues; contributed to deployments across multiple networks, including PulseChain.",
-    "Worked on the frontend within an existing team; protocol design, smart contracts and backend were owned elsewhere.",
+    "Built and maintained React/TypeScript DeFi interfaces spanning borrowing, Stability Pool, staking, farming, redemptions and liquidations, with wallet integration, ERC-20 balances and transaction-state handling.",
+    "Used wagmi, ethers and GraphQL/subgraphs to power financial dashboards from on-chain data, investigating RPC limits and chain-sync issues; contributed to deployments across multiple networks, including PulseChain. Frontend within an existing team; protocol design, contracts and backend were owned elsewhere.",
   ],
   "Fetch Oracle": [
-    "Principal frontend contributor to the Fetch Oracle dashboard, building interfaces for oracle reporting, staking and reporting APR, disputes, voting, rewards, and wallet/account state against on-chain data.",
+    "Principal frontend contributor to the Fetch Oracle dashboard: oracle reporting, staking and reporting APR, disputes, voting, rewards and wallet/account state against live on-chain data.",
     "Testnet and configuration migration work, developer-facing integration material and production debugging; contracts and backend were owned elsewhere.",
   ],
   // Detailed under Selected products; the timeline only shows continuity.
-  "@unicorn": [],
+  // Framed as the role, not the product — the product detail is under
+  // Selected products, and a dated title with nothing under it reads as
+  // unfinished.
+  "@unicorn": [
+    "Founded and ran a consumer social product over four years, owning product direction, UX and application architecture through several platform iterations.",
+  ],
+  // Detailed under Selected products; excluded from the CV timeline entirely.
   Ampuno: [],
 };
 
