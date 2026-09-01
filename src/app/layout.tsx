@@ -32,7 +32,7 @@ const personJsonLd = {
   email: `mailto:${site.email}`,
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Phnom Penh",
+    addressLocality: "Kampot",
     addressCountry: "KH",
   },
   sameAs: [site.linkedin, site.github],

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Section from "./Section";
-import { projects, otherWork } from "@/lib/content";
+import { projects } from "@/lib/content";
 
 export default function SelectedWork() {
   return (
@@ -9,7 +9,7 @@ export default function SelectedWork() {
       index="01"
       eyebrow="Selected work"
       title="Products I've built and shipped"
-      description="Projects spanning fintech, Web3, AI and consumer products — from data pipelines to production DeFi interfaces."
+      description="Independent products spanning Web3, AI, data and consumer software — from EV data pipelines to on-chain social and market analytics."
     >
       <div className="grid gap-6 md:grid-cols-2">
         {projects.map((project) => (
@@ -37,7 +37,7 @@ export default function SelectedWork() {
                   </h3>
                 </div>
                 <span className="whitespace-nowrap font-mono text-xs text-[var(--color-ink-faint)]">
-                  {project.period}
+                  Since {project.started}
                 </span>
               </div>
               <p className="mt-1 text-sm text-[var(--color-accent)]">
@@ -80,35 +80,6 @@ export default function SelectedWork() {
             </span>
           </Link>
         ))}
-      </div>
-
-      <div className="mt-10 rounded-2xl border border-dashed border-[var(--color-border)] p-6 md:p-8">
-        <p className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-ink-faint)]">
-          Other work
-        </p>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {otherWork.map((item) => (
-            <div key={item.name}>
-              <p className="text-sm font-medium text-[var(--color-ink)]">
-                {item.url ? (
-                  <a
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[var(--color-accent)]"
-                  >
-                    {item.name} ↗
-                  </a>
-                ) : (
-                  item.name
-                )}
-              </p>
-              <p className="mt-1 text-sm text-[var(--color-ink-muted)]">
-                {item.description}
-              </p>
-            </div>
-          ))}
-        </div>
       </div>
     </Section>
   );

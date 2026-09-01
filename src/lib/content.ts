@@ -3,7 +3,7 @@ export const site = {
   title: "Senior Product Engineer",
   tagline:
     "I build modern software products from idea to production across web, AI, data, fintech and Web3.",
-  location: "Phnom Penh, Cambodia",
+  location: "Kampot, Cambodia",
   email: "contact@edgarasneverdauskas.com",
   phone: "+855 81 680 954",
   url: "https://edgarasneverdauskas.com",
@@ -82,8 +82,9 @@ export type Project = {
   name: string;
   logo?: string;
   role: string;
-  period: string;
-  status: string;
+  /** Year the work began. Rendered as "Since <year>" — deliberately open-ended,
+      because these products stay alive and an end year would rot each January. */
+  started: string;
   summary: string;
   problem: string;
   ownership: string[];
@@ -101,8 +102,7 @@ export const projects: Project[] = [
     name: "Ampuno",
     logo: "/logos/ampuno.png",
     role: "Founder & Product Engineer",
-    period: "Jul 2026 — Present",
-    status: "Actively developed",
+    started: "2026",
     summary:
       "An electric-vehicle catalogue and comparison platform: structured EV data, search, filtering, and side-by-side model comparison built for clarity at scale.",
     problem:
@@ -129,6 +129,8 @@ export const projects: Project[] = [
       "TypeScript",
       "Vitest",
       "Playwright",
+      "Tailwind CSS",
+      "zod",
       "SEO / canonical metadata",
       "Analytics",
     ],
@@ -140,8 +142,7 @@ export const projects: Project[] = [
     name: "Self-Aware Writing",
     logo: "/logos/selfawarewriting.svg",
     role: "Author & Product Engineer",
-    period: "Aug 2026 — Present",
-    status: "In progress",
+    started: "2026",
     summary:
       "A living book that notices you while you read it — it knows where you are, remembers where you stopped, and won't build if the prose contradicts itself.",
     problem:
@@ -151,7 +152,7 @@ export const projects: Project[] = [
       "Astro/TypeScript architecture where a chapter is one Markdown file everything else derives from",
       "Custom remark/rehype plugins for stanza breaks and in-chapter page splitting",
       "Reader behaviour: two reading modes, theme, progress, resume, offline PWA",
-      "A checker for the claims the book makes about itself, plus 120+ Playwright tests",
+      "A checker for the claims the book makes about itself, plus 75 Playwright tests run across desktop, mobile and Safari",
     ],
     challenges: [
       "Chapters quote each other, so editing one file can falsify a sentence in another",
@@ -176,7 +177,6 @@ export const projects: Project[] = [
     ],
     links: [
       { label: "Live product", url: "https://selfawarewriting.com" },
-      { label: "Source", url: "https://github.com/Evirtual/selfawarewriting" },
     ],
     note: "Deliberately unfinished — chapters are added as they are written, and the next one sits listed and locked in the sidebar before it exists.",
     featured: true,
@@ -186,8 +186,7 @@ export const projects: Project[] = [
     name: "@unicorn",
     logo: "/logos/atunicorn.png",
     role: "Founder & Product Engineer",
-    period: "Apr 2022 — Present",
-    status: "Long-running product",
+    started: "2022",
     summary:
       "A long-running social and self-expression product, in continuous iteration since 2022 — product direction, authentication, profiles, posts and media, built and rebuilt as the platform matured.",
     problem:
@@ -207,6 +206,7 @@ export const projects: Project[] = [
       "Firebase as a managed backend to keep infrastructure overhead low for a founder-run product",
       "React Native Web to share application logic between web and native-leaning surfaces",
       "Progressive modernization of the stack (Next.js, styled-components) rather than a disruptive rewrite",
+      "A Cloudflare Worker fronting Cloudinary for media, keeping image handling off the Firebase bill",
     ],
     tech: [
       "Next.js",
@@ -214,54 +214,10 @@ export const projects: Project[] = [
       "Firebase",
       "React Native Web",
       "styled-components",
+      "Cloudflare Workers",
+      "Cloudinary",
     ],
     links: [{ label: "Live product", url: "https://atunicorn.io" }],
-    featured: true,
-  },
-  {
-    slug: "liquidloans-fetch-oracle",
-    name: "LiquidLoans / Fetch Oracle",
-    logo: "/logos/liquidloans.png",
-    role: "Frontend Engineer",
-    period: "2022 — 2026",
-    status: "Professional engagement",
-    summary:
-      "Frontend engineering across a multi-chain DeFi ecosystem — borrowing, staking, liquidations, and oracle reporting interfaces handling live on-chain financial state.",
-    problem:
-      "DeFi interfaces have to stay correct under constantly changing on-chain state: prices, positions, and transaction status can all shift mid-interaction. The frontend has to represent that state faithfully or users lose money.",
-    ownership: [
-      "React/TypeScript interfaces for borrowing, Stability Pool interactions, staking, farming, redemptions and liquidations",
-      "Wallet integrations, ERC-20 balances, approvals, transactions and transaction-state handling",
-      "Fetch Oracle interfaces: oracle reporting, staking/reporting APR, disputes, voting and rewards",
-      "Multi-chain deployment work, including adapting existing DeFi flows to an additional chain",
-      "Testnet/configuration migration work and developer-facing integration material",
-    ],
-    challenges: [
-      "Keeping wallet and transaction state consistent through pending, confirmed, and failed states across multiple chains",
-      "Debugging RPC limits, chain-sync issues and application-state drift under production load",
-      "Representing oracle pricing and staking/reward data accurately in real time",
-    ],
-    decisions: [
-      "wagmi and ethers for wallet/contract interaction, chosen for type-safe, composable state handling",
-      "GraphQL/Apollo against subgraphs for indexed on-chain data instead of querying contracts directly for every read",
-      "Careful separation of on-chain read state from optimistic UI state to keep financial dashboards trustworthy",
-    ],
-    tech: [
-      "React",
-      "TypeScript",
-      "wagmi",
-      "ethers",
-      "GraphQL",
-      "Apollo",
-      "Subgraphs",
-      "ERC-20",
-      "Multi-chain",
-    ],
-    links: [
-      { label: "LiquidLoans", url: "https://go.liquidloans.io/#/" },
-      { label: "Fetch Oracle dashboard", url: "https://go.fetchoracle.com/#/" },
-    ],
-    note: "Private professional engagement — source is not publicly available.",
     featured: true,
   },
   {
@@ -269,30 +225,46 @@ export const projects: Project[] = [
     name: "Bitcoin Analytics",
     logo: "/logos/bitcoin-analytics.svg",
     role: "Independent Product Engineer",
-    period: "2025 — 2026",
-    status: "Independent product",
+    started: "2025",
     summary:
-      "A market and wallet analytics dashboard tracking BTC pricing and multichain wrapped-Bitcoin balances across Ethereum, Base and BSC, built with a heavily AI-assisted engineering workflow.",
+      "A Bitcoin market and portfolio analytics dashboard: price, returns, volatility, drawdowns, moving averages and market mood, alongside multichain wrapped-Bitcoin wallet balances across Ethereum, Base and BSC.",
     problem:
-      "Wrapped-Bitcoin exposure is fragmented across chains and bridges. This dashboard pulls market data and wallet balances together into one view, with fallbacks when a primary data source is unavailable.",
+      "Reading Bitcoin exposure properly means holding two things at once: what the market is doing, and what you actually hold. Public market APIs rate-limit and go down, and wrapped-Bitcoin holdings sit behind a different token contract on every chain. This pulls both into one view that degrades instead of breaking.",
     ownership: [
       "Product direction, architecture and implementation decisions",
-      "Market data integration with Coinbase/Kraken fallback logic",
+      "Market data integration with Coinbase/Kraken fallback, per-source backoff and a short-lived local price cache",
+      "An analytics layer: returns, volatility, drawdowns, moving averages, price bands, a returns heatmap and volume, over 1D/1W/1M ranges",
+      "Fear & Greed market mood, plus portfolio holdings, risk and cost-basis tracking held entirely in the browser",
       "Multichain wallet connectivity and wrapped-Bitcoin balance aggregation (Ethereum WBTC, Base WBTC, BSC BTCB)",
       "Code review, debugging, integration testing and final quality — using AI tools as an implementation accelerator throughout",
     ],
     challenges: [
-      "Handling market-data provider outages gracefully with an automatic fallback path",
+      "Staying inside public API rate limits without the dashboard going blank — a failing source is backed off rather than retried",
+      "Keeping a dozen chart cards readable on a phone without cutting the data they exist to show",
       "Aggregating wrapped-Bitcoin balances consistently across chains with different token contracts and decimals",
       "Structuring an AI-assisted build so generated code still met production standards after review",
     ],
     decisions: [
       "React + TypeScript + Vite for a fast, dependency-light client-side dashboard",
-      "A provider-fallback pattern for market data rather than a single point of failure",
+      "A provider-fallback pattern for market data rather than a single point of failure, with per-source backoff so an outage degrades one card instead of the page",
+      "Cost basis and preferences in localStorage — the dashboard has no accounts and no backend to hold anyone's positions",
+      "Modals loaded on open rather than on arrival, keeping the first paint small",
       "Deployed via GitHub Actions to a dedicated custom subdomain",
     ],
-    tech: ["React", "TypeScript", "Vite", "GitHub Actions", "Wallet integrations"],
-    links: [{ label: "Live product", url: "https://bitcoin.edgarasneverdauskas.com" }],
+    tech: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "wagmi",
+      "viem",
+      "Recharts",
+      "TanStack Query",
+      "GitHub Actions",
+    ],
+    links: [
+      { label: "Live product", url: "https://bitcoin.edgarasneverdauskas.com" },
+      { label: "Source", url: "https://github.com/Evirtual/bitcoin-analytics" },
+    ],
     note: "Built with a heavily AI-assisted engineering workflow — product direction, architecture, review and final quality were mine throughout.",
     featured: true,
   },
@@ -301,51 +273,52 @@ export const projects: Project[] = [
     name: "Social Blockchain Network",
     logo: "/logos/social-blockchain-network.svg",
     role: "Independent Product Engineer",
-    period: "2025 — 2026",
-    status: "Testnet prototype",
+    started: "2025",
     summary:
-      "A social product experiment where posts are minted as NFTs: likes and comments are wallet-signed on-chain interactions, and tips go directly to creators, deployed across three testnets.",
+      "A social product where every write is a signed transaction: posts are minted as NFTs, and likes, comments, saves, follows and tips all settle on chain, running across three testnets at once.",
     problem:
       "Exploring what a social feed looks like when posts, reactions and tipping are on-chain primitives instead of rows in a database — including what that does to identity, ownership and creator payouts.",
     ownership: [
       "Product concept, architecture and implementation end to end",
+      "The SocialPosts Solidity contract and its test suite, written with Hardhat and OpenZeppelin",
       "Wallet-based identity and on-chain post minting",
-      "Wallet-signed reactions (likes/comments) and direct creator tipping",
-      "IPFS media storage and subgraph-driven application data",
+      "Wallet-signed likes, comments, saves and follows, plus direct creator tipping and withdrawal",
+      "In-browser media preparation before upload — image cropping and ffmpeg.wasm video trimming",
+      "IPFS media storage via Pinata, and subgraph-driven application data",
     ],
     challenges: [
       "Designing a feed UX where every write (post, like, comment, tip) is a signed on-chain transaction with real latency",
       "Indexing on-chain activity into a readable feed via subgraphs instead of a traditional database",
+      "Keeping the feed usable when an indexer lags or goes down, without a database to fall back on",
       "Running the same application logic consistently across three separate testnets",
     ],
     decisions: [
       "Posts as NFTs and reactions as signed on-chain interactions, rather than bolting a wallet onto a conventional backend",
       "IPFS for media so post content isn't dependent on centralized storage",
+      "Subgraph reads with a per-chain fallback to raw event logs over RPC, so one indexer outage degrades the feed instead of emptying it",
       "Deployed to Base Sepolia, Ethereum Sepolia and BSC Testnet as a multi-chain testbed before any mainnet decision",
     ],
-    tech: ["Wallet integrations", "NFTs", "Subgraphs", "IPFS", "Multi-chain"],
-    links: [{ label: "Live testnet product", url: "https://social.edgarasneverdauskas.com" }],
+    tech: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Solidity / Hardhat",
+      "ethers",
+      "NFTs",
+      "Subgraphs",
+      "IPFS",
+      "ffmpeg.wasm",
+      "Multi-chain",
+    ],
+    links: [
+      { label: "Live testnet product", url: "https://social.edgarasneverdauskas.com" },
+      {
+        label: "Source",
+        url: "https://github.com/Evirtual/social-blockchain-network",
+      },
+    ],
     note: "Runs on public testnets (Base Sepolia, Ethereum Sepolia, BSC Testnet) — no real funds involved.",
     featured: true,
-  },
-];
-
-export type OtherWork = {
-  name: string;
-  description: string;
-  url?: string;
-};
-
-export const otherWork: OtherWork[] = [
-  {
-    name: "Tokenization boilerplate",
-    description:
-      "Independent exploration of tokenization patterns and infrastructure in TypeScript.",
-  },
-  {
-    name: "PhotoRank AI",
-    description:
-      "An AI-powered image-ranking product with a mobile-first UX, vision-model analysis, and Stripe-based checkout.",
   },
 ];
 
@@ -359,36 +332,44 @@ export type ExperienceEntry = {
 
 export const experience: ExperienceEntry[] = [
   {
+    role: "Founder & Product Engineer",
+    org: "Ampuno",
+    location: "Kampot, Cambodia",
+    period: "2026",
+    description:
+      "EV catalogue and comparison platform — data pipeline, product architecture, and end-to-end delivery.",
+  },
+  {
     role: "Independent Product Engineer",
     org: "Self-employed",
-    location: "Phnom Penh, Cambodia",
-    period: "Dec 2025 — Present",
+    location: "Kampot, Cambodia",
+    period: "2025 — 2026",
     description:
-      "Building and shipping independent products across AI, data, Web3 and consumer technology, including Self-Aware Writing, PhotoRank AI, Bitcoin Analytics, and Web3 experiments.",
+      "Building and shipping independent products across AI, data, Web3 and consumer technology — Self-Aware Writing, Bitcoin Analytics and the Social Blockchain Network.",
   },
   {
     role: "Frontend Engineer",
-    org: "LiquidLoans ecosystem",
+    org: "Fetch Oracle",
+    location: "Remote",
+    period: "2023 — 2026",
+    description:
+      "Frontend engineering for an oracle protocol and its own dashboard — oracle reporting, staking and reporting APR, disputes, voting and rewards. Testnet and configuration migration work, and developer-facing integration material. Contracts and backend were owned elsewhere.",
+  },
+  {
+    role: "Frontend Engineer",
+    org: "LiquidLoans",
     location: "Remote",
     period: "2022 — 2026",
     description:
-      "DeFi interfaces spanning borrowing, staking, liquidations and wallet integrations, including work on Fetch Oracle and multi-chain deployments.",
+      "Frontend engineering for a DeFi lending protocol — borrowing, Stability Pool interactions, staking, farming, redemptions and liquidations. Wallet integrations, ERC-20 balances, approvals and transaction-state handling against live on-chain financial state, plus adapting existing flows to an additional chain. Built with React, TypeScript, wagmi and subgraph-backed GraphQL; protocol design, contracts and backend were owned elsewhere.",
   },
   {
     role: "Founder & Product Engineer",
     org: "@unicorn",
-    location: "Phnom Penh, Cambodia",
-    period: "Apr 2022 — Present",
+    location: "Kampot, Cambodia",
+    period: "2022 — 2026",
     description:
       "Long-running social/self-expression product — product direction, UX, and application architecture through multiple iterations.",
-  },
-  {
-    role: "Founder & Product Engineer",
-    org: "Ampuno",
-    location: "Phnom Penh, Cambodia",
-    period: "Jul 2026 — Present",
-    description:
-      "EV catalogue and comparison platform — data pipeline, product architecture, and end-to-end delivery.",
   },
 ];
 

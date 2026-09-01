@@ -77,10 +77,7 @@ export default async function ProjectPage({
           Back to selected work
         </Link>
 
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-accent)]">
-          {project.status}
-        </p>
-        <div className="mt-3 flex items-center gap-4">
+        <div className="flex items-center gap-4">
           {project.logo && (
             <img
               src={project.logo}
@@ -97,7 +94,7 @@ export default async function ProjectPage({
         <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-[var(--color-ink-muted)]">
           <span>{project.role}</span>
           <span className="text-[var(--color-border-strong)]">·</span>
-          <span className="font-mono">{project.period}</span>
+          <span className="font-mono">Since {project.started}</span>
         </div>
 
         {project.links.length > 0 && (

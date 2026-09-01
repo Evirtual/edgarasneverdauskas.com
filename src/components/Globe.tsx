@@ -7,7 +7,7 @@ const SAMPLES = 6000;
 const COMPACT_SAMPLES = 3200;
 const ROTATION_SPEED = 0.16; // radians per second
 const TILT = (-18 * Math.PI) / 180;
-const HOME = latLonToVector(11.56, 104.92); // Phnom Penh
+const HOME = latLonToVector(10.61, 104.18); // Kampot
 const BUCKETS = 32; // alpha levels; dots are batched per level to cut fill calls
 
 type Rgb = [number, number, number];
