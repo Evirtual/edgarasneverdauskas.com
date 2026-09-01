@@ -12,7 +12,9 @@ const SPIN_DECAY = 1.1;
 const DRAG_TURNS = 1.4;
 /** Past this a throw stops feeling like a throw and starts strobing. */
 const MAX_SPIN = 14;
-const TILT = (-18 * Math.PI) / 180;
+// Positive tips the north pole toward the viewer. Negative did the opposite,
+// which put an unhelpful amount of Antarctica in the middle of the frame.
+const TILT = (1 * Math.PI) / 180;
 const HOME = latLonToVector(10.61, 104.18); // Kampot
 const BUCKETS = 32; // alpha levels; dots are batched per level to cut fill calls
 
