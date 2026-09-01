@@ -5,7 +5,13 @@ import { buildGlobePoints, latLonToVector } from "@/lib/globe-land";
 
 const SAMPLES = 6000;
 const COMPACT_SAMPLES = 3200;
-const ROTATION_SPEED = 0.16; // radians per second
+const ROTATION_SPEED = 0.16; // radians per second, the idle drift
+/** Seconds for a throw to bleed most of the way back to the idle drift. */
+const SPIN_DECAY = 1.1;
+/** How far a full-width drag turns the globe. */
+const DRAG_TURNS = 1.4;
+/** Past this a throw stops feeling like a throw and starts strobing. */
+const MAX_SPIN = 14;
 const TILT = (-18 * Math.PI) / 180;
 const HOME = latLonToVector(10.61, 104.18); // Kampot
 const BUCKETS = 32; // alpha levels; dots are batched per level to cut fill calls
@@ -58,6 +64,19 @@ export default function Globe() {
     let angle = 0;
     let lastTime = 0;
 
+    // Grab-to-spin. The globe idles at ROTATION_SPEED, follows the pointer while
+    // held, and on release keeps the velocity it was thrown with, bleeding back
+    // to the idle drift. Reduced motion idles at zero but stays draggable —
+    // the preference is about unrequested movement, not about being inert.
+    const idleSpin = reduceMotion ? 0 : ROTATION_SPEED;
+    /** Radians per second. Negative spins the other way. */
+    let spin = idleSpin;
+    let dragging = false;
+    let pointerX = 0;
+    let pointerAt = 0;
+    /** Smoothed drag velocity, so a jittery last frame does not define the throw. */
+    let thrown = 0;
+
     const themeObserver = new MutationObserver(() => {
       ink = readColor("--color-ink", "#f2f2f0");
       accent = readColor("--color-accent", "#5eead4");
@@ -98,7 +117,15 @@ export default function Globe() {
 
       const delta = lastTime ? (time - lastTime) / 1000 : 0;
       lastTime = time;
-      if (!reduceMotion) angle += delta * ROTATION_SPEED;
+      if (dragging) {
+        // Held: the pointer alone moves it, so nothing is added here.
+      } else {
+        angle += delta * spin;
+        // Exponential ease back to the idle drift. Framed as a time constant
+        // rather than a per-frame multiplier so the decay is identical at 30fps
+        // and 120fps.
+        spin += (idleSpin - spin) * (1 - Math.exp(-delta / SPIN_DECAY));
+      }
 
       const center = size / 2;
       const radius = size * 0.42;
@@ -216,6 +243,54 @@ export default function Globe() {
       cancelAnimationFrame(frame);
     }
 
+    function onPointerDown(event: PointerEvent) {
+      if (event.button !== 0) return;
+      dragging = true;
+      thrown = 0;
+      pointerX = event.clientX;
+      pointerAt = event.timeStamp;
+      // Throws if the pointer is no longer active, which a synthetic or
+      // already-released one can be. Losing capture only costs us the drag.
+      try {
+        canvas!.setPointerCapture(event.pointerId);
+      } catch {}
+      canvas!.style.cursor = "grabbing";
+    }
+
+    function onPointerMove(event: PointerEvent) {
+      if (!dragging || !size) return;
+      const dx = event.clientX - pointerX;
+      const dt = Math.max(1, event.timeStamp - pointerAt) / 1000;
+      pointerX = event.clientX;
+      pointerAt = event.timeStamp;
+
+      // Horizontal only: the globe has one axis, and reading vertical movement
+      // would fight the page scroll on a phone.
+      const turned = (dx / size) * Math.PI * DRAG_TURNS;
+      angle += turned;
+
+      // Smoothed towards the latest sample, so releasing mid-flick throws at
+      // the speed of the gesture rather than of its final millisecond.
+      thrown = thrown * 0.7 + (turned / dt) * 0.3;
+    }
+
+    function endDrag(event: PointerEvent) {
+      if (!dragging) return;
+      dragging = false;
+      spin = Math.max(-MAX_SPIN, Math.min(MAX_SPIN, thrown));
+      try {
+        if (canvas!.hasPointerCapture(event.pointerId)) {
+          canvas!.releasePointerCapture(event.pointerId);
+        }
+      } catch {}
+      canvas!.style.cursor = "";
+    }
+
+    canvas.addEventListener("pointerdown", onPointerDown);
+    canvas.addEventListener("pointermove", onPointerMove);
+    canvas.addEventListener("pointerup", endDrag);
+    canvas.addEventListener("pointercancel", endDrag);
+
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(canvas);
 
@@ -234,6 +309,10 @@ export default function Globe() {
 
     return () => {
       stop();
+      canvas.removeEventListener("pointerdown", onPointerDown);
+      canvas.removeEventListener("pointermove", onPointerMove);
+      canvas.removeEventListener("pointerup", endDrag);
+      canvas.removeEventListener("pointercancel", endDrag);
       resizeObserver.disconnect();
       visibilityObserver.disconnect();
       themeObserver.disconnect();
@@ -242,6 +321,12 @@ export default function Globe() {
   }, []);
 
   return (
-    <canvas ref={canvasRef} aria-hidden="true" className="aspect-square w-full" />
+    <canvas
+      ref={canvasRef}
+      aria-hidden="true"
+      // pan-y keeps vertical page scrolling native on a phone while horizontal
+      // drags are ours; touch-none would trap the page inside the globe.
+      className="aspect-square w-full cursor-grab touch-pan-y"
+    />
   );
 }
