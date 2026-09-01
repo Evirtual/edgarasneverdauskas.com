@@ -98,6 +98,53 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "timeline",
+    name: "Timeline",
+    logo: "/logos/timeline.svg",
+    role: "Independent Product Engineer",
+    started: "2026",
+    summary:
+      "A comparative timeline: organisations run as rows against a shared quarterly axis, so reading down a column shows who shipped what in the same three months. The first dataset is the AI race.",
+    problem:
+      "A chronology of one company is a Wikipedia article. The question nobody can answer in a single view is the comparative one — when GPT-4 shipped, what did Anthropic have in market, and how long did the others take to respond?",
+    ownership: [
+      "Product concept, data model and implementation end to end",
+      "A zod-backed content schema where each category is its own JSON file, free to extend a shared minimal contract",
+      "The race grid: CSS Grid against a quarterly axis, with weighted events and empty stretches folded into a labelled break",
+      "Editor-style pan and zoom — wheel, drag, pinch and keyboard — written directly rather than taken from a library",
+      "A separate phone view, because eight columns of quarters cannot be compared on a 360px screen",
+      "Researching, dating and sourcing every event, and the script that verifies the citations still resolve",
+    ],
+    challenges: [
+      "Event density: the field produced more in 2023–2025 than in the twenty years before, so a year-per-row axis collapses into an unreadable pile",
+      "Making a horizontally scrolling grid usable with a mouse, where a wheel does nothing and the scrollbar is the only way across",
+      "Keeping a pinned column pinned — padding on the scrolling content silently unsticks it, because it pins to the scrollport rather than the padded box",
+    ],
+    decisions: [
+      "Organisations as rows rather than columns: eight columns put five on screen, which defeats the comparison the product exists for",
+      "Quarters rather than years, with a weight on every event so the default view carries the significant ones and a control reveals the rest",
+      "A source URL required on every event by the schema, day-precise dates even though the view groups by quarter, and tests for dangling references, duplicate ids and future dates",
+      "No pan-and-zoom library — the carousel ones fight a free-scrolling grid and the gesture ones were more than one handler needed",
+    ],
+    tech: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "zod",
+      "Vitest",
+      "Playwright",
+      "CSS Grid",
+      "GitHub Actions",
+    ],
+    links: [
+      { label: "Live product", url: "https://timeline.edgarasneverdauskas.com" },
+      { label: "Source", url: "https://github.com/Evirtual/timeline" },
+    ],
+    note: "Built to hold more than one dataset — the category switcher appears when a second one exists, so a single tab never reads as an unfinished feature.",
+    featured: true,
+  },
+  {
     slug: "ampuno",
     name: "Ampuno",
     logo: "/logos/ampuno.png",
@@ -345,7 +392,7 @@ export const experience: ExperienceEntry[] = [
     location: "Remote",
     period: "2025 — 2026",
     description:
-      "Building and shipping independent products across AI, data, Web3 and consumer technology — Self-Aware Writing, Bitcoin Analytics and the Social Blockchain Network.",
+      "Building and shipping independent products across AI, data, Web3 and consumer technology — Timeline, Self-Aware Writing, Bitcoin Analytics and the Social Blockchain Network.",
   },
   {
     role: "Frontend Engineer",

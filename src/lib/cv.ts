@@ -39,6 +39,10 @@ export const experienceBullets: Record<string, string[]> = {
 
 // Keyed by `slug` in content.ts `projects`.
 export const productBullets: Record<string, string[]> = {
+  timeline: [
+    "A comparative timeline where organisations are rows on a shared quarterly axis, so one column shows who shipped what in the same three months — the view a per-company chronology cannot give.",
+    "Weighted events and folded-up quiet stretches keep a decade of dense releases readable; every event carries a day-precise date and a source URL the schema requires and a script re-verifies.",
+  ],
   ampuno: [
     "Normalizes 231 vehicle models and 1,105 variants from inconsistent multi-source specification data into a single validated schema.",
     "Next.js App Router with static generation for model and trim pages, a zod validation layer between raw source data and the rendered catalogue, and Vitest plus Playwright covering data correctness and search, filtering and comparison flows.",
