@@ -1,6 +1,26 @@
 import Section from "./Section";
 import { experience, earlierExperience } from "@/lib/content";
 
+// One rail for the whole history. The earlier agency years used to sit in a
+// separate box below, which read as a footnote; they are roles like any other,
+// so they run on the same line with their own markers.
+const roles = [
+  ...experience.map((e) => ({
+    period: e.period,
+    role: e.role,
+    org: e.org,
+    location: e.location,
+    lines: [e.description],
+  })),
+  ...earlierExperience.map((e) => ({
+    period: e.period,
+    role: e.role,
+    org: e.orgs.join(", "),
+    location: e.location,
+    lines: e.description,
+  })),
+];
+
 export default function Experience() {
   return (
     <Section
@@ -13,10 +33,10 @@ export default function Experience() {
           hole in it with a ring in the page background, so the line reads as
           continuous behind each entry rather than butting against it. */}
       <ol className="relative ml-1 border-l border-[var(--color-border)] pl-7 md:pl-10">
-        {experience.map((entry, i) => (
+        {roles.map((entry, i) => (
           <li
             key={`${entry.role}-${entry.org}`}
-            className={i === experience.length - 1 ? "" : "pb-10 md:pb-12"}
+            className={i === roles.length - 1 ? "" : "pb-10 md:pb-12"}
           >
             <span
               aria-hidden="true"
@@ -39,21 +59,17 @@ export default function Experience() {
             <p className="mt-1 font-mono text-xs text-[var(--color-ink-faint)]">
               {entry.location}
             </p>
-            <p className="mt-3 max-w-2xl leading-relaxed text-[var(--color-ink-muted)]">
-              {entry.description}
-            </p>
+            {entry.lines.map((line) => (
+              <p
+                key={line}
+                className="mt-3 max-w-2xl leading-relaxed text-[var(--color-ink-muted)]"
+              >
+                {line}
+              </p>
+            ))}
           </li>
         ))}
       </ol>
-
-      <div className="mt-12 border-t border-[var(--color-border)] pt-8">
-        <p className="text-sm text-[var(--color-ink-faint)]">
-          Earlier career:{" "}
-          <span className="text-[var(--color-ink-muted)]">
-            {earlierExperience.join(", ")}
-          </span>
-        </p>
-      </div>
     </Section>
   );
 }

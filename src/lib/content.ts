@@ -334,7 +334,7 @@ export const experience: ExperienceEntry[] = [
   {
     role: "Founder & Product Engineer",
     org: "Ampuno",
-    location: "Kampot, Cambodia",
+    location: "Remote",
     period: "2026",
     description:
       "EV catalogue and comparison platform — data pipeline, product architecture, and end-to-end delivery.",
@@ -342,7 +342,7 @@ export const experience: ExperienceEntry[] = [
   {
     role: "Independent Product Engineer",
     org: "Self-employed",
-    location: "Kampot, Cambodia",
+    location: "Remote",
     period: "2025 — 2026",
     description:
       "Building and shipping independent products across AI, data, Web3 and consumer technology — Self-Aware Writing, Bitcoin Analytics and the Social Blockchain Network.",
@@ -350,7 +350,7 @@ export const experience: ExperienceEntry[] = [
   {
     role: "Frontend Engineer",
     org: "Fetch Oracle",
-    location: "Remote",
+    location: "Cambodia · Remote",
     period: "2023 — 2026",
     description:
       "Frontend engineering for an oracle protocol and its own dashboard — oracle reporting, staking and reporting APR, disputes, voting and rewards. Testnet and configuration migration work, and developer-facing integration material. Contracts and backend were owned elsewhere.",
@@ -358,7 +358,7 @@ export const experience: ExperienceEntry[] = [
   {
     role: "Frontend Engineer",
     org: "LiquidLoans",
-    location: "Remote",
+    location: "Cambodia · Remote",
     period: "2022 — 2026",
     description:
       "Frontend engineering for a DeFi lending protocol — borrowing, Stability Pool interactions, staking, farming, redemptions and liquidations. Wallet integrations, ERC-20 balances, approvals and transaction-state handling against live on-chain financial state, plus adapting existing flows to an additional chain. Built with React, TypeScript, wagmi and subgraph-backed GraphQL; protocol design, contracts and backend were owned elsewhere.",
@@ -366,18 +366,35 @@ export const experience: ExperienceEntry[] = [
   {
     role: "Founder & Product Engineer",
     org: "@unicorn",
-    location: "Kampot, Cambodia",
+    location: "Remote",
     period: "2022 — 2026",
     description:
       "Long-running social/self-expression product — product direction, UX, and application architecture through multiple iterations.",
   },
 ];
 
+// The agency and in-house years behind the "10+ years" claim. Kept as one
+// entry rather than four, because the work was the same craft throughout and
+// four thin entries would say less than one substantiated one.
 export const earlierExperience = [
-  "Clik",
-  "Brave Agency",
-  "Zazzle Media",
-  "e4education",
+  {
+    role: "Frontend Developer",
+    orgs: ["Clik"],
+    period: "2021 — 2022",
+    location: "Cambodia",
+    description: [
+      "Brought in on the design side before moving into frontend development — React, JavaScript and HTML/CSS, building and maintaining responsive product interfaces.",
+    ],
+  },
+  {
+    role: "Frontend Developer",
+    orgs: ["Brave Agency", "Zazzle Media", "e4education"],
+    period: "2015 — 2021",
+    location: "United Kingdom",
+    description: [
+      "Agency and in-house frontend work — JavaScript and HTML/CSS, plus WordPress and PHP builds for client websites and web platforms, taken from design handoff through to production.",
+    ],
+  },
 ];
 
 export type ExpertiseGroup = {
