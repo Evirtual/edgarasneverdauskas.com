@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { site } from "./content";
 
-export const defaultDescription =
-  "Senior Product Engineer building modern web, AI, fintech and Web3 products with React, TypeScript and Next.js.";
+export const defaultDescription = site.description;
 
 export function buildMetadata(overrides: Partial<Metadata> = {}): Metadata {
   return {

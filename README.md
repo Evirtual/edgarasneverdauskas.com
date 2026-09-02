@@ -1,6 +1,6 @@
 # edgarasneverdauskas.com
 
-Personal portfolio for Edgaras Neverdauskas — Senior Product Engineer.
+Personal portfolio for Edgaras Neverdauskas — Product Engineer.
 
 Built with Next.js (App Router, static export), React, TypeScript and Tailwind CSS. Deployed to GitHub Pages via GitHub Actions.
 

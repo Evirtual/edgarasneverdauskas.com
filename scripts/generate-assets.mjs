@@ -1,11 +1,18 @@
 // One-off asset generator: renders the favicon mark and OG image via
 // Playwright/Chromium at exact pixel sizes, then writes PNGs to /public.
-// Not part of the app build — run manually with `node scripts/generate-assets.mjs`.
+// Not part of the app build — run manually with `npm run assets`.
+//
+// Name, title, stack and the manifest description are read from content.ts
+// rather than retyped here, so this card cannot drift from the site the way it
+// did when the title changed. The eyebrow is deliberately not a place name: the
+// OG image is a baked PNG, so a city in it goes stale on the next move.
 import { chromium } from "@playwright/test";
 import pngToIco from "png-to-ico";
 import { writeFileSync, mkdirSync, rmSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+
+import { site } from "../src/lib/content.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.join(__dirname, "..", "public");
@@ -104,10 +111,10 @@ function ogHtml() {
           ${markSvgInner()}
         </svg>
       </div>
-      <p class="eyebrow">Phnom Penh, Cambodia</p>
-      <h1>Edgaras Neverdauskas</h1>
-      <h2>Senior Product Engineer</h2>
-      <p class="stack"><b>React · TypeScript · Next.js · AI · Web3 · Fintech</b></p>
+      <p class="eyebrow">Working globally</p>
+      <h1>${site.name}</h1>
+      <h2>${site.title}</h2>
+      <p class="stack"><b>${site.stack.join(" · ")}</b></p>
     </div>
   </body></html>`;
 }
@@ -157,10 +164,9 @@ writeFileSync(
   JSON.stringify(
     {
       id: "/",
-      name: "Edgaras Neverdauskas — Senior Product Engineer",
-      short_name: "Edgaras Neverdauskas",
-      description:
-        "Senior Product Engineer building modern web, AI, fintech and Web3 products with React, TypeScript and Next.js.",
+      name: `${site.name} — ${site.title}`,
+      short_name: site.name,
+      description: site.description,
       start_url: "/",
       scope: "/",
       display: "standalone",

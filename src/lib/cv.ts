@@ -7,7 +7,7 @@
 
 export const summary = {
   // Shown bold, as the opening claim.
-  lead: "Senior Product Engineer with 10+ years of software-development experience spanning product development, UI/UX, modern frontend architecture, Web3/DeFi and AI-enabled products.",
+  lead: "Product Engineer with 10+ years of software-development experience spanning product development, UI/UX, modern frontend architecture, Web3/DeFi and AI-enabled products.",
   rest: "Experienced in taking ideas from concept to working product — shaping product direction and user experience while owning technical decisions, implementation and delivery, across both hands-on development and advisory work.",
 };
 

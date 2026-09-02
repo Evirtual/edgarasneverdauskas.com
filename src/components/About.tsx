@@ -6,7 +6,7 @@ export default function About() {
     <Section id="about" index="06" eyebrow="About" title="A bit about me">
       <div className="max-w-2xl space-y-5 text-lg leading-relaxed text-[var(--color-ink-muted)]">
         <p>
-          I&apos;m a senior product engineer with {site.yearsExperience} years
+          I&apos;m a product engineer with {site.yearsExperience} years
           in software development, based in {site.location}. My background is
           in frontend and product engineering, with real depth in fintech,
           DeFi and blockchain, and more recently AI-enabled software and
@@ -24,7 +24,7 @@ export default function About() {
           architecture, or working out what is actually worth building next.
         </p>
         <p>
-          Open to senior local and remote opportunities, and to advisory work.
+          Open to local and remote opportunities, and to advisory work.
         </p>
       </div>
     </Section>

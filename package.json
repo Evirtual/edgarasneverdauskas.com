@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test:e2e": "playwright test",
-    "cv": "node --experimental-strip-types --no-warnings scripts/generate-cv.mjs"
+    "cv": "node --experimental-strip-types --no-warnings scripts/generate-cv.mjs",
+    "assets": "node --experimental-strip-types --no-warnings scripts/generate-assets.mjs"
   },
   "dependencies": {
     "geist": "^1.3.1",

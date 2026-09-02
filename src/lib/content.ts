@@ -1,6 +1,10 @@
 export const site = {
   name: "Edgaras Neverdauskas",
-  title: "Senior Product Engineer",
+  title: "Product Engineer",
+  // Also the meta/OG/manifest description — re-exported by seo.ts and read by
+  // scripts/generate-assets.mjs, so the manifest cannot drift from the page.
+  description:
+    "Product Engineer building modern web, AI, fintech and Web3 products with React, TypeScript and Next.js.",
   tagline:
     "I build modern software products from idea to production across web, AI, data, fintech and Web3.",
   location: "Kampot, Cambodia",
@@ -13,7 +17,7 @@ export const site = {
   stack: ["React", "TypeScript", "Next.js", "AI", "Web3", "Fintech"],
   yearsExperience: "10+",
   // Signals both paths: employment and advisory work.
-  availability: "Open to senior roles & advisory work",
+  availability: "Open to new roles & advisory work",
 };
 
 // These describe the problems worth thinking through together, not the stack
