@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "AI-Built Product Audit | Edgaras Neverdauskas",
@@ -26,12 +27,12 @@ export default function AuditPage() {
   return (
     <main className="min-h-screen bg-[var(--color-bg)] text-[var(--color-ink)]">
       <div className="mx-auto max-w-5xl px-6 py-16 md:px-10 md:py-24">
-        <a
+        <Link
           href="/"
           className="text-sm text-[var(--color-ink-muted)] transition-opacity hover:opacity-70"
         >
           ← Edgaras Neverdauskas
-        </a>
+        </Link>
 
         <section className="mt-14 max-w-3xl">
           <p className="text-sm font-medium uppercase tracking-[0.16em] text-[var(--color-accent)]">
