@@ -109,7 +109,11 @@ const COVERED_BY_PRODUCTS = ["Ampuno"];
 const timelineRoles = experience.filter((e) => !COVERED_BY_PRODUCTS.includes(e.org));
 
 const sections = {
-  products: section("Selected products", projects.map(productEntry).join("")),
+  // A product with no bullets is on the site only (see productBullets).
+  products: section(
+    "Selected products",
+    projects.filter((p) => bulletsFor(productBullets, p.slug, "project slug").length).map(productEntry).join(""),
+  ),
   experience: section(
     "Professional experience",
     `<ul class="timeline">${[...timelineRoles, ...earlierEntries]

@@ -102,6 +102,56 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "jarvis",
+    name: "J.A.R.V.I.S. Console",
+    logo: "/logos/jarvis.svg",
+    role: "Independent Product Engineer",
+    started: "2026",
+    summary:
+      "An Iron Man–style console that talks back: the machine's real readings on a HUD, a voice, and threads of research you run by talking — answered through Gemini or ChatGPT with your own key, which never leaves your device.",
+    problem:
+      "Every AI chat is a text box. Nothing from the machine reaches it, and a long conversation is one scroll where the third subject buries the first. And the moment a product holds people's API keys it needs a server, accounts and billing, and their questions pass through someone else's logs.",
+    ownership: [
+      "Product, design and implementation end to end — the console, its server and the serverless web version",
+      "The board: each line of enquiry is a window, related ones gather into a bubble, and a context web shows what else on the board shares a thread's subject",
+      "One back end shared by both versions, handed only a place to read keys from, so the PC and the web page cannot drift apart",
+      "The voice: sentences sent for synthesis as they arrive and scheduled back to back on the audio clock, so he starts talking within a second of the first words",
+      "A command parser so everything you can click can also be said, and a fixed set of directives the model may use to operate the console itself",
+      "Real telemetry on the PC — per-core CPU, the GPU, a network sweep — and the honest equivalents a browser can measure for the web version",
+      "The first-run guide, the QA log (97 numbered fixes), and the docs",
+    ],
+    challenges: [
+      "Speaking while the answer is still streaming: where a sentence ends, what to say first when the opening runs long, and holding the last quarter-second back to trim the silence a service leaves at the join",
+      "Free tiers run out under real use — web grounding first, then the voice — so an account's models are tried in turn, a spent one rests, every refusal is said in plain words, and the other service steps in before a word is spoken",
+      "A version with no server at all: the browser measures what it genuinely can, and a Content Security Policy locked to the two services means even a bug in the page could not send a key elsewhere",
+      "The model keeping house: naming a thread properly and moving a new subject to its own window is a directive in the answer, after heuristics guessed wrong",
+    ],
+    decisions: [
+      "Bring your own key, kept on the device: no accounts, no billing, no server costs, and nothing to leak",
+      "Two services only, Gemini first because its free tier needs no card; OpenRouter and in-browser speech models were built, measured, and dropped — five to ten times slower in a browser",
+      "The connection layer takes its services as a parameter, so it is unit-tested with fakes rather than with a key",
+      "Vanilla TypeScript, no UI framework: the board is a canvas plus DOM writes when a reading changes",
+      "Free and open source under AGPL-3.0, supported by a coffee rather than a subscription",
+    ],
+    tech: [
+      "TypeScript",
+      "Vite",
+      "Node.js",
+      "Web Audio",
+      "Canvas",
+      "Gemini API",
+      "OpenAI API",
+      "PWA",
+      "GitHub Pages",
+    ],
+    links: [
+      { label: "Live product", url: "https://jarvis.edgarasneverdauskas.com" },
+      { label: "Source", url: "https://github.com/Evirtual/jarvis" },
+    ],
+    note: "It runs as a PC app with its own server, or as a page on GitHub Pages with none — the same code, and the same behaviour, because the back end is one module given two places to keep keys.",
+    featured: true,
+  },
+  {
     slug: "timeline",
     name: "Timeline",
     logo: "/logos/timeline.svg",

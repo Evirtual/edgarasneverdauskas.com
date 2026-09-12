@@ -39,6 +39,10 @@ export const experienceBullets: Record<string, string[]> = {
 
 // Keyed by `slug` in content.ts `projects`.
 export const productBullets: Record<string, string[]> = {
+  // On the site, not on the CV: the CV sits at two pages and a seventh
+  // product would push it to three. Empty means left out of the PDF; give it
+  // bullets when something else makes room.
+  jarvis: [],
   timeline: [
     "A comparative timeline where organisations are rows on a shared quarterly axis, so one column shows who shipped what in the same three months — the view a per-company chronology cannot give.",
     "Weighted events and folded-up quiet stretches keep a decade of dense releases readable; every event carries a day-precise date and a source URL the schema requires and a script re-verifies.",
