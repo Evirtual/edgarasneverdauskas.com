@@ -1,4 +1,8 @@
+<p align="center"><img src="public/apple-touch-icon.png" width="112" alt="EN."></p>
+
 # edgarasneverdauskas.com
+
+[![Deploy to GitHub Pages](https://github.com/Evirtual/edgarasneverdauskas.com/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/Evirtual/edgarasneverdauskas.com/actions/workflows/deploy-pages.yml)
 
 Personal portfolio for Edgaras Neverdauskas — Product Engineer.
 
