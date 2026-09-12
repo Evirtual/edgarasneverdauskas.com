@@ -37,3 +37,12 @@ export and deploys it to GitHub Pages. The custom domain is configured via `publ
 ## Content
 
 All page content lives in a single typed source of truth: [`src/lib/content.ts`](src/lib/content.ts).
+
+## Licence
+
+[AGPL-3.0](LICENSE). Use it, read it, change it, share it; if you run a
+changed version as a service for others, publish your changes too.
+© 2021–2026 Edgaras Neverdauskas.
+
+That covers the code. The words, the CV, the photograph and the project
+images are mine and not part of it: all rights reserved.
