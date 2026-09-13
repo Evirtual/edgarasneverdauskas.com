@@ -39,33 +39,36 @@ export const experienceBullets: Record<string, string[]> = {
 
 // Keyed by `slug` in content.ts `projects`.
 export const productBullets: Record<string, string[]> = {
-  // On the site, not on the CV: the CV sits at two pages and a seventh
-  // product would push it to three. Empty means left out of the PDF; give it
-  // bullets when something else makes room.
-  jarvis: [],
+  // Two short bullets per product, each about one printed line: the CV sits
+  // at two pages, and the longer versions pushed the seventh product onto a
+  // third. An empty array would leave a product on the site only.
+  jarvis: [
+    "Iron Man–style voice assistant with a HUD of the machine's real readings; research runs as threads on a board.",
+    "Answered by Gemini or ChatGPT with the user's own key, kept on the device; one back end shared by the PC app and the web version.",
+  ],
   timeline: [
-    "A comparative timeline where organisations are rows on a shared quarterly axis, so one column shows who shipped what in the same three months — the view a per-company chronology cannot give.",
-    "Weighted events and folded-up quiet stretches keep a decade of dense releases readable; every event carries a day-precise date and a source URL the schema requires and a script re-verifies.",
+    "Comparative timeline with organisations as rows on a shared quarterly axis: who shipped what in the same quarter.",
+    "Weighted events and folded quiet stretches keep a decade readable; every event has a dated source URL a script re-verifies.",
   ],
   ampuno: [
-    "Normalizes 231 vehicle models and 1,105 variants from inconsistent multi-source specification data into a single validated schema.",
-    "Next.js App Router with static generation for model and trim pages, a zod validation layer between raw source data and the rendered catalogue, and Vitest plus Playwright covering data correctness and search, filtering and comparison flows.",
+    "Normalizes 231 vehicle models and 1,105 variants from inconsistent multi-source data into one validated schema.",
+    "Next.js static model and trim pages, a zod layer over raw data, Vitest and Playwright on search, filtering and comparison.",
   ],
   "self-aware-writing": [
-    "A living book built as one artifact with its software: an Astro/TypeScript site where a chapter is one Markdown file, with custom remark/rehype plugins for stanza breaks and in-chapter page splitting.",
-    "Reader state — progress, resume, theme, two reading modes — is held in localStorage with no accounts or analytics; 75 Playwright tests run across desktop, mobile and Safari, and a self-consistency checker fails CI when chapters contradict each other.",
+    "A living book built with its software: an Astro/TypeScript site where a chapter is one Markdown file, with custom remark plugins.",
+    "Reader state in localStorage, no accounts or analytics; 75 Playwright tests and a consistency checker that fails CI on contradictions.",
   ],
   atunicorn: [
-    "Long-running consumer social product in continuous iteration since 2022, spanning authentication, profiles, posts and media upload flows.",
-    "Progressive modernization of the stack rather than a disruptive rewrite, sharing application logic between web and native-leaning surfaces via React Native Web.",
+    "Consumer social product in continuous iteration since 2022: authentication, profiles, posts and media upload.",
+    "Progressive modernization instead of a rewrite, sharing logic between web and native surfaces via React Native Web.",
   ],
   "bitcoin-analytics": [
-    "React + TypeScript + Vite dashboard for BTC market data: returns, volatility, drawdowns, moving averages, price bands, a returns heatmap and volume across 1D/1W/1M ranges, plus Fear & Greed market mood.",
-    "Coinbase/Kraken provider fallback with per-source backoff so an outage degrades one card rather than the page; wallet-connected multichain wrapped-Bitcoin balances across Ethereum, Base and BSC, with cost basis held in the browser.",
+    "React/TypeScript/Vite dashboard for BTC market data: returns, volatility, drawdowns, moving averages, heatmap and Fear & Greed.",
+    "Coinbase/Kraken fallback with per-source backoff so an outage degrades one card; wrapped-BTC balances across Ethereum, Base and BSC.",
   ],
   "social-blockchain-network": [
-    "A social product where every write is a signed transaction: posts minted as NFTs, and likes, comments, saves, follows and tips settling on chain across Base Sepolia, Ethereum Sepolia and BSC Testnet.",
-    "Wrote the SocialPosts Solidity contract and its Hardhat test suite; media prepared in-browser with image cropping and ffmpeg.wasm video trimming, stored on IPFS, with subgraph reads falling back to raw event logs per chain.",
+    "Social product where every write is a signed transaction: posts minted as NFTs, likes, comments, follows and tips on chain.",
+    "Wrote the SocialPosts Solidity contract and Hardhat tests; in-browser media cropping and ffmpeg.wasm trimming, stored on IPFS.",
   ],
 };
 

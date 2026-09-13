@@ -103,7 +103,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "jarvis",
-    name: "J.A.R.V.I.S. Console",
+    name: "J.A.R.V.I.S.",
     logo: "/logos/jarvis.svg",
     role: "Independent Product Engineer",
     started: "2026",
