@@ -36,7 +36,7 @@ test("selected work links to a working case study page", async ({ page }) => {
   page.on("pageerror", (err) => errors.push(String(err)));
 
   await page.goto("/");
-  await page.locator('a[href="/work/ampuno/"]').click();
+  await page.locator('#work a[href="/work/ampuno/"]').click();
   await expect(page).toHaveURL(/\/work\/ampuno\/?$/);
   await expect(page.getByRole("heading", { name: "Ampuno" })).toBeVisible();
   expect(errors).toEqual([]);

@@ -21,12 +21,12 @@ import {
   site,
   expertise,
   experience,
-  earlierExperience,
   projects,
 } from "../src/lib/content.ts";
 import {
   summary,
-  experienceBullets,
+  chapterBullets,
+  roleBullets,
   productBullets,
   languages,
 } from "../src/lib/cv.ts";
@@ -84,29 +84,35 @@ const productEntry = (p) => `
     ${li(bulletsFor(productBullets, p.slug, "project slug"))}
   </div>`;
 
-const earlierEntries = earlierExperience.map((e) => ({
-  period: e.period,
-  role: e.role,
-  org: e.orgs.join(", "),
-  location: e.location,
-  bullets: e.description,
-}));
+// The same three chapters as the site: a marker per chapter on the rail, and
+// the roles held inside it as sub-entries. Products are named on one line and
+// detailed under Selected products.
+const productName = (slug) => {
+  const p = projects.find((x) => x.slug === slug);
+  if (!p) throw new Error(`Experience lists unknown project "${slug}"`);
+  return p.name;
+};
 
-const experienceEntry = (e, i) => `
+const roleEntry = (r) => `
+  <div class="sub">
+    <div class="row">
+      <p class="sub-name">${esc(r.org)}</p>
+      <p class="when">${esc(r.period)}</p>
+    </div>
+    <p class="where">${esc(r.location)}</p>
+    ${li(bulletsFor(roleBullets, r.org, "experience org"))}
+  </div>`;
+
+const chapterEntry = (c, i) => `
   <li class="tl-item">
     <span class="dot${i === 0 ? " dot-now" : ""}"></span>
-    <p class="when when-left">${esc(e.period)}</p>
-    <p class="name">${esc(e.role)}<span class="role"> · ${esc(e.org)}</span></p>
-    <p class="where">${esc(e.location)}</p>
-    ${li(e.bullets ?? bulletsFor(experienceBullets, e.org, "experience org"))}
+    <p class="when when-left">${esc(c.period)}</p>
+    <p class="name">${esc(c.title)}</p>
+    <p class="where">${esc(c.location)}</p>
+    ${li(bulletsFor(chapterBullets, c.title, "experience chapter"))}
+    ${c.products ? `<p class="products"><b>Products:</b> ${esc(c.products.map(productName).join(", "))}</p>` : ""}
+    ${(c.roles ?? []).map(roleEntry).join("")}
   </li>`;
-
-// Ampuno is covered in full under Selected products, and the Independent
-// Product Engineer entry already accounts for that period of self-employment,
-// so repeating it in the timeline says nothing new. Listed by org name; the
-// site keeps its own entry either way.
-const COVERED_BY_PRODUCTS = ["Ampuno"];
-const timelineRoles = experience.filter((e) => !COVERED_BY_PRODUCTS.includes(e.org));
 
 const sections = {
   // A product with no bullets is on the site only (see productBullets).
@@ -116,9 +122,7 @@ const sections = {
   ),
   experience: section(
     "Professional experience",
-    `<ul class="timeline">${[...timelineRoles, ...earlierEntries]
-      .map(experienceEntry)
-      .join("")}</ul>`,
+    `<ul class="timeline">${experience.map(chapterEntry).join("")}</ul>`,
   ),
   toolkit: section(
     "Toolkit",
@@ -227,6 +231,12 @@ const html = `<!doctype html>
   }
   .dot-now { background: var(--accent); }
   .when-left { margin-bottom: 1.5pt; }
+  .products { font-size: 9pt; color: var(--ink-muted); margin: 3pt 0 0; }
+  .products b { color: var(--ink); font-weight: 500; }
+
+  /* Roles inside a chapter: a lighter rail of their own, no marker. */
+  .sub { margin-top: 5pt; padding-left: 8pt; border-left: 0.6pt solid var(--border); break-inside: avoid; }
+  .sub-name { font-size: 9.5pt; font-weight: 500; margin: 0; }
 
   .skill { margin: 0 0 3pt; font-size: 9pt; color: var(--ink-muted); }
   .skill b { color: var(--ink); font-weight: 500; }

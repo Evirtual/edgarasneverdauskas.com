@@ -11,30 +11,34 @@ export const summary = {
   rest: "Experienced in taking ideas from concept to working product — shaping product direction and user experience while owning technical decisions, implementation and delivery, across both hands-on development and advisory work.",
 };
 
-// Keyed by the `org` in content.ts `experience`, so a role renamed there
+// The CV mirrors the site's three chapters. Chapter bullets are keyed by the
+// chapter title and role bullets by the org, so a rename in content.ts
 // surfaces here as a missing key rather than silently losing its bullets.
-export const experienceBullets: Record<string, string[]> = {
-  "Self-employed": [
+export const chapterBullets: Record<string, string[]> = {
+  "Independent Product Engineer": [
     "Build and ship independent software products across AI, data, Web3 and consumer technology, owning architecture, implementation, testing and deployment from concept to working product.",
     "Use OpenAI Codex and Claude Code extensively as engineering accelerators while retaining responsibility for product direction, architecture, review, debugging and final quality.",
+  ],
+  // The roles carry the detail; the chapter itself only frames them.
+  "Frontend Engineer · Web3 / DeFi": [],
+  "Frontend Developer": [],
+};
+
+export const roleBullets: Record<string, string[]> = {
+  "Fetch Oracle": [
+    "Principal frontend contributor to the Fetch Oracle dashboard: oracle reporting, staking and reporting APR, disputes, voting, rewards and wallet/account state against live on-chain data.",
+    "Testnet and configuration migration work, developer-facing integration material and production debugging; contracts and backend were owned elsewhere.",
   ],
   LiquidLoans: [
     "Built and maintained React/TypeScript DeFi interfaces spanning borrowing, Stability Pool, staking, farming, redemptions and liquidations, with wallet integration, ERC-20 balances and transaction-state handling.",
     "Used wagmi, ethers and GraphQL/subgraphs to power financial dashboards from on-chain data, investigating RPC limits and chain-sync issues; contributed to deployments across multiple networks, including PulseChain. Frontend within an existing team; protocol design, contracts and backend were owned elsewhere.",
   ],
-  "Fetch Oracle": [
-    "Principal frontend contributor to the Fetch Oracle dashboard: oracle reporting, staking and reporting APR, disputes, voting, rewards and wallet/account state against live on-chain data.",
-    "Testnet and configuration migration work, developer-facing integration material and production debugging; contracts and backend were owned elsewhere.",
+  Clik: [
+    "Brought in on the design side before moving into frontend development — React, JavaScript and HTML/CSS, building and maintaining responsive product interfaces.",
   ],
-  // Detailed under Selected products; the timeline only shows continuity.
-  // Framed as the role, not the product — the product detail is under
-  // Selected products, and a dated title with nothing under it reads as
-  // unfinished.
-  "@unicorn": [
-    "Founded and ran a consumer social product over four years, owning product direction, UX and application architecture through several platform iterations.",
+  "Brave Agency, Zazzle Media, e4education": [
+    "Agency and in-house frontend work — JavaScript and HTML/CSS, plus WordPress and PHP builds for client websites and web platforms, taken from design handoff through to production.",
   ],
-  // Detailed under Selected products; excluded from the CV timeline entirely.
-  Ampuno: [],
 };
 
 // Keyed by `slug` in content.ts `projects`.
@@ -59,7 +63,7 @@ export const productBullets: Record<string, string[]> = {
     "Reader state in localStorage, no accounts or analytics; 75 Playwright tests and a consistency checker that fails CI on contradictions.",
   ],
   atunicorn: [
-    "Consumer social product in continuous iteration since 2022: authentication, profiles, posts and media upload.",
+    "Consumer social product in continuous iteration since 2021: authentication, profiles, posts and media upload.",
     "Progressive modernization instead of a rewrite, sharing logic between web and native surfaces via React Native Web.",
   ],
   "bitcoin-analytics": [

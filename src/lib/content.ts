@@ -287,9 +287,9 @@ export const projects: Project[] = [
     name: "@unicorn",
     logo: "/logos/atunicorn.png",
     role: "Founder & Product Engineer",
-    started: "2022",
+    started: "2021",
     summary:
-      "A long-running social and self-expression product, in continuous iteration since 2022 — product direction, authentication, profiles, posts and media, built and rebuilt as the platform matured.",
+      "A long-running social and self-expression product, in continuous iteration since 2021 — product direction, authentication, profiles, posts and media, built and rebuilt as the platform matured.",
     problem:
       "Building a consumer social product that survives multiple technology and design iterations without losing continuity of product direction or user data.",
     ownership: [
@@ -423,77 +423,89 @@ export const projects: Project[] = [
   },
 ];
 
-export type ExperienceEntry = {
-  role: string;
+// The history is three chapters, not seven jobs: agency frontend, then DeFi
+// frontend for two protocols at once, then my own products. Concurrent roles
+// sit inside a chapter as sub-entries, so overlap reads as structure rather
+// than as five jobs held at the same time.
+export type ExperienceRole = {
   org: string;
   location: string;
   period: string;
   description: string;
 };
 
-export const experience: ExperienceEntry[] = [
-  {
-    role: "Founder & Product Engineer",
-    org: "Ampuno",
-    location: "Remote",
-    period: "2026",
-    description:
-      "EV catalogue and comparison platform — data pipeline, product architecture, and end-to-end delivery.",
-  },
-  {
-    role: "Independent Product Engineer",
-    org: "Self-employed",
-    location: "Remote",
-    period: "2025 — 2026",
-    description:
-      "Building and shipping independent products across AI, data, Web3 and consumer technology — Timeline, Self-Aware Writing, Bitcoin Analytics and the Social Blockchain Network.",
-  },
-  {
-    role: "Frontend Engineer",
-    org: "Fetch Oracle",
-    location: "Cambodia · Remote",
-    period: "2023 — 2026",
-    description:
-      "Frontend engineering for an oracle protocol and its own dashboard — oracle reporting, staking and reporting APR, disputes, voting and rewards. Testnet and configuration migration work, and developer-facing integration material. Contracts and backend were owned elsewhere.",
-  },
-  {
-    role: "Frontend Engineer",
-    org: "LiquidLoans",
-    location: "Cambodia · Remote",
-    period: "2022 — 2026",
-    description:
-      "Frontend engineering for a DeFi lending protocol — borrowing, Stability Pool interactions, staking, farming, redemptions and liquidations. Wallet integrations, ERC-20 balances, approvals and transaction-state handling against live on-chain financial state, plus adapting existing flows to an additional chain. Built with React, TypeScript, wagmi and subgraph-backed GraphQL; protocol design, contracts and backend were owned elsewhere.",
-  },
-  {
-    role: "Founder & Product Engineer",
-    org: "@unicorn",
-    location: "Remote",
-    period: "2022 — 2026",
-    description:
-      "Long-running social/self-expression product — product direction, UX, and application architecture through multiple iterations.",
-  },
-];
+export type ExperienceChapter = {
+  title: string;
+  period: string;
+  location: string;
+  summary: string;
+  // Concurrent or successive roles inside the chapter.
+  roles?: ExperienceRole[];
+  // Project slugs, rendered as links to the case studies.
+  products?: string[];
+};
 
-// The agency and in-house years behind the "10+ years" claim. Kept as one
-// entry rather than four, because the work was the same craft throughout and
-// four thin entries would say less than one substantiated one.
-export const earlierExperience = [
+export const experience: ExperienceChapter[] = [
   {
-    role: "Frontend Developer",
-    orgs: ["Clik"],
-    period: "2021 — 2022",
-    location: "Cambodia",
-    description: [
-      "Brought in on the design side before moving into frontend development — React, JavaScript and HTML/CSS, building and maintaining responsive product interfaces.",
+    title: "Independent Product Engineer",
+    period: "2025 — Present",
+    location: "Remote",
+    summary:
+      "Building and shipping my own products across AI, data, Web3 and consumer technology — product direction, architecture, implementation, testing and deployment, with OpenAI Codex and Claude Code as accelerators and the decisions, review and final quality my own.",
+    products: [
+      "jarvis",
+      "timeline",
+      "ampuno",
+      "self-aware-writing",
+      "atunicorn",
+      "bitcoin-analytics",
+      "social-blockchain-network",
     ],
   },
   {
-    role: "Frontend Developer",
-    orgs: ["Brave Agency", "Zazzle Media", "e4education"],
-    period: "2015 — 2021",
-    location: "United Kingdom",
-    description: [
-      "Agency and in-house frontend work — JavaScript and HTML/CSS, plus WordPress and PHP builds for client websites and web platforms, taken from design handoff through to production.",
+    title: "Frontend Engineer · Web3 / DeFi",
+    period: "2022 — 2026",
+    location: "Cambodia · Remote",
+    summary:
+      "Frontend for two live protocols, within existing teams that owned the contracts and backend. Both products remain live; the build work is complete and I step in only when a bug needs fixing.",
+    roles: [
+      {
+        org: "Fetch Oracle",
+        location: "Cambodia · Remote",
+        period: "2023 — 2026",
+        description:
+          "Principal frontend contributor to the protocol's dashboard — oracle reporting, staking and reporting APR, disputes, voting and rewards against live on-chain data. Testnet and configuration migrations, developer-facing integration material and production debugging.",
+      },
+      {
+        org: "LiquidLoans",
+        location: "Cambodia · Remote",
+        period: "2022 — 2026",
+        description:
+          "React and TypeScript interfaces for a DeFi lending protocol — borrowing, Stability Pool, staking, farming, redemptions and liquidations, with wallet integration, ERC-20 balances and transaction-state handling over wagmi, ethers and subgraph-backed GraphQL. Deployed across several networks, including PulseChain.",
+      },
+    ],
+  },
+  {
+    title: "Frontend Developer",
+    period: "2015 — 2022",
+    location: "United Kingdom · Cambodia",
+    summary:
+      "Agency and in-house frontend work, taken from design handoff through to production.",
+    roles: [
+      {
+        org: "Clik",
+        location: "Cambodia",
+        period: "2021 — 2022",
+        description:
+          "Brought in on the design side before moving into frontend development — React, JavaScript and HTML/CSS, building and maintaining responsive product interfaces.",
+      },
+      {
+        org: "Brave Agency, Zazzle Media, e4education",
+        location: "United Kingdom",
+        period: "2015 — 2021",
+        description:
+          "JavaScript and HTML/CSS, plus WordPress and PHP builds for client websites and web platforms.",
+      },
     ],
   },
 ];
