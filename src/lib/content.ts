@@ -102,6 +102,54 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "css-3d-lab",
+    name: "CSS 3D Lab",
+    logo: "/logos/css-3d-lab.svg",
+    role: "Independent Product Engineer",
+    started: "2026",
+    summary:
+      "A free gallery of 125 3D models built with CSS — solids, product mockups, text, controls, loaders and whole scenes — each running live beside a step-by-step explanation and copy-paste code you can edit in the page.",
+    problem:
+      "CSS 3D tutorials show one spinning cube and stop. The hard parts are left out: closing a rounded box so you cannot see into it, keeping a scene the same shape at card size and in full screen, knowing what genuinely needs JavaScript. And code copied from a gallery usually depends on that gallery's build.",
+    ownership: [
+      "Product, design and implementation end to end — 125 models, the gallery, a page for every model and group, and the tooling that keeps them consistent",
+      "Every model in two forms: the site's own Sass, and a standalone HTML/CSS snippet with no build step, which the build refuses to ship without",
+      "An editor in the page: change the snippet and the model re-renders in a sandboxed frame, saved in the browser only",
+      "A camera that holds at every size: perspective lives inside the zoomed scene, so a model looks the same in a card, a dialog and a 4K full screen",
+      "Media made at build time: a share image for every page and a vertical download video for every model, filmed from the built site by headless Chromium and ffmpeg",
+      "Search: a real page per model and per group, with structured data, canonical addresses and a sitemap",
+    ],
+    challenges: [
+      "Sizing and centring 125 very different shapes evenly: element boxes miss what a ::before draws and count what clip-path cuts away, so the measurement is taken from the pixels actually drawn",
+      "Rounded 3D boxes leak: at every corner you could see into an empty box, until a plate behind each face closed it",
+      "Proving every model works: a QA pass plays each one the way its badge promises — hover, drag, click, scroll — and flags any that do not change on screen or spill out of their card",
+      "Keeping 125 animated scenes cheap: a model only exists in the page while its card is near the screen",
+    ],
+    decisions: [
+      "Pure CSS wherever it can be (93 of the 125); where JavaScript is needed it only feeds numbers in, and CSS still does all the drawing",
+      "Vite, TypeScript and Sass, with no UI framework and no 3D library",
+      "Download videos served from a GitHub release rather than the site, so they do not count against the host's bandwidth; each deploy checks every file is there at its recorded size",
+      "Free and open source under MIT, with no accounts and no ads; cookie-free analytics, and a coffee link instead of a paywall",
+    ],
+    tech: [
+      "TypeScript",
+      "Vite",
+      "Sass",
+      "CSS 3D transforms",
+      "Playwright",
+      "ffmpeg",
+      "PWA",
+      "GitHub Actions",
+      "GitHub Pages",
+    ],
+    links: [
+      { label: "Live product", url: "https://css3dlab.edgarasneverdauskas.com" },
+      { label: "Source", url: "https://github.com/Evirtual/css-3d-lab" },
+    ],
+    note: "Every model ships its snippet, its explanation and its video free — the snippet is checked at build time, so a model without copy-paste code cannot be published.",
+    featured: true,
+  },
+  {
     slug: "jarvis",
     name: "J.A.R.V.I.S.",
     logo: "/logos/jarvis.svg",
@@ -453,6 +501,7 @@ export const experience: ExperienceChapter[] = [
     summary:
       "Building and shipping my own products across AI, data, Web3 and consumer technology — product direction, architecture, implementation, testing and deployment, with OpenAI Codex and Claude Code as accelerators and the decisions, review and final quality my own.",
     products: [
+      "css-3d-lab",
       "jarvis",
       "timeline",
       "ampuno",

@@ -46,6 +46,10 @@ export const productBullets: Record<string, string[]> = {
   // Two short bullets per product, each about one printed line: the CV sits
   // at two pages, and the longer versions pushed the seventh product onto a
   // third. An empty array would leave a product on the site only.
+  "css-3d-lab": [
+    "Free gallery of 125 3D models built with CSS, each live beside a step-by-step explanation and editable copy-paste code.",
+    "Vite/TypeScript/Sass; pixel-measured sizing, a Playwright QA pass on every model, share images and videos filmed at build.",
+  ],
   jarvis: [
     "Iron Man–style voice assistant with a HUD of the machine's real readings; research runs as threads on a board.",
     "Answered by Gemini or ChatGPT with the user's own key, kept on the device; one back end shared by the PC app and the web version.",
