@@ -51,7 +51,7 @@ export const productBullets: Record<string, string[]> = {
     "Vite/TypeScript/Sass; pixel-measured sizing, a Playwright QA pass on every model, share images and videos filmed at build.",
   ],
   jarvis: [
-    "Iron Man–style voice assistant with a HUD of the machine's real readings; research runs as threads on a board.",
+    "Iron Man–style voice assistant with a HUD of the machine's real readings; every subject runs as a thread on a board.",
     "Answered by Gemini or ChatGPT with the user's own key, kept on the device; one back end shared by the PC app and the web version.",
   ],
   timeline: [
