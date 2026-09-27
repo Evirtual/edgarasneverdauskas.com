@@ -21,7 +21,10 @@ export default function Header() {
           aria-label={`${site.name} — home`}
           className="text-[var(--color-ink)] transition-opacity hover:opacity-80"
         >
-          <LogoMark className="h-5 w-auto" />
+          {/* 15px, the same height the mark has in the articles site's header. The two sites link
+              to each other and are open side by side; a logo that changes size between them reads
+              as two marks rather than one. */}
+          <LogoMark className="h-[15px] w-auto" />
         </Link>
 
         <div className="flex items-center gap-4">
