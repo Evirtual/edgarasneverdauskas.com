@@ -122,18 +122,21 @@ export const projects: Project[] = [
       "A camera that holds at every size: perspective lives inside the zoomed scene, so a model looks the same in a card, a dialog and a 4K full screen",
       "Media made at build time: a share image for every page and a vertical download video for every model, filmed from the built site by headless Chromium and ffmpeg",
       "Search: a real page per model and per group, with structured data, canonical addresses and a sitemap",
+      "A ledger that decides whether a release goes out: eleven automated checks over all 135 models — the written view contract, how each model looks on every surface it appears on, motion, the files the export dialog hands out, share images, keyboard and pause, box sizing, text contrast and frame times — each writing a verdict per model onto a board",
     ],
     challenges: [
       "Sizing and centring 135 very different shapes evenly: element boxes miss what a ::before draws and count what clip-path cuts away, so the measurement is taken from the pixels actually drawn",
       "Rounded 3D boxes leak: at every corner you could see into an empty box, until a plate behind each face closed it",
       "Proving every model works: a QA pass plays each one the way its badge promises — hover, drag, click, scroll — and flags any that do not change on screen or spill out of their card",
       "Keeping 135 animated scenes cheap: a model only exists in the page while its card is near the screen",
+      "A pass is only true of the code it ran on: a verdict expires when the model changes, or when any shared file on its render path does, so the board can say “passed on older code” instead of showing a green tick that quietly stopped being true",
     ],
     decisions: [
       "Pure CSS wherever it can be (93 of the 135); where JavaScript is needed it only feeds numbers in, and CSS still does all the drawing",
       "Vite, TypeScript and Sass, with no UI framework and no 3D library",
       "Download videos served from a GitHub release rather than the site, so they do not count against the host's bandwidth; each deploy checks every file is there at its recorded size",
       "Free and open source under MIT, with no accounts and no ads; cookie-free analytics, and a coffee link instead of a paywall",
+      "Nothing ships on a claim: the release gate is the ledger itself, and ready means both halves — every check holding over all 135 models, and nothing on the board being old",
     ],
     tech: [
       "TypeScript",

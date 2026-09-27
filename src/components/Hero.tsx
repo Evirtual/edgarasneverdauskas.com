@@ -83,6 +83,14 @@ export default function Hero() {
                 GitHub
               </a>
               <a
+                href={site.articles}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-[var(--color-ink)]"
+              >
+                Articles
+              </a>
+              <a
                 href="#contact"
                 className="transition-colors hover:text-[var(--color-ink)]"
               >
