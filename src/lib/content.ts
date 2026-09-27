@@ -108,11 +108,11 @@ export const projects: Project[] = [
     role: "Independent Product Engineer",
     started: "2026",
     summary:
-      "A free gallery of 125 3D models built with CSS — solids, product mockups, text, controls, loaders and whole scenes — each running live beside a step-by-step explanation and copy-paste code you can edit in the page.",
+      "A free gallery of 135 3D models built with CSS — solids, product mockups, text, controls, loaders and whole scenes — each running live beside a step-by-step explanation and copy-paste code you can edit in the page.",
     problem:
       "CSS 3D tutorials show one spinning cube and stop. The hard parts are left out: closing a rounded box so you cannot see into it, keeping a scene the same shape at card size and in full screen, knowing what genuinely needs JavaScript. And code copied from a gallery usually depends on that gallery's build.",
     ownership: [
-      "Product, design and implementation end to end — 125 models, the gallery, a page for every model and group, and the tooling that keeps them consistent",
+      "Product, design and implementation end to end — 135 models, the gallery, a page for every model and group, and the tooling that keeps them consistent",
       "Every model in two forms: the site's own Sass, and a standalone HTML/CSS snippet with no build step, which the build refuses to ship without",
       "An editor in the page: change the snippet and the model re-renders in a sandboxed frame, saved in the browser only",
       "A camera that holds at every size: perspective lives inside the zoomed scene, so a model looks the same in a card, a dialog and a 4K full screen",
@@ -120,13 +120,13 @@ export const projects: Project[] = [
       "Search: a real page per model and per group, with structured data, canonical addresses and a sitemap",
     ],
     challenges: [
-      "Sizing and centring 125 very different shapes evenly: element boxes miss what a ::before draws and count what clip-path cuts away, so the measurement is taken from the pixels actually drawn",
+      "Sizing and centring 135 very different shapes evenly: element boxes miss what a ::before draws and count what clip-path cuts away, so the measurement is taken from the pixels actually drawn",
       "Rounded 3D boxes leak: at every corner you could see into an empty box, until a plate behind each face closed it",
       "Proving every model works: a QA pass plays each one the way its badge promises — hover, drag, click, scroll — and flags any that do not change on screen or spill out of their card",
-      "Keeping 125 animated scenes cheap: a model only exists in the page while its card is near the screen",
+      "Keeping 135 animated scenes cheap: a model only exists in the page while its card is near the screen",
     ],
     decisions: [
-      "Pure CSS wherever it can be (93 of the 125); where JavaScript is needed it only feeds numbers in, and CSS still does all the drawing",
+      "Pure CSS wherever it can be (93 of the 135); where JavaScript is needed it only feeds numbers in, and CSS still does all the drawing",
       "Vite, TypeScript and Sass, with no UI framework and no 3D library",
       "Download videos served from a GitHub release rather than the site, so they do not count against the host's bandwidth; each deploy checks every file is there at its recorded size",
       "Free and open source under MIT, with no accounts and no ads; cookie-free analytics, and a coffee link instead of a paywall",
@@ -145,6 +145,8 @@ export const projects: Project[] = [
     links: [
       { label: "Live product", url: "https://css3dlab.edgarasneverdauskas.com" },
       { label: "Source", url: "https://github.com/Evirtual/css-3d-lab" },
+      { label: "Article", url: "https://articles.edgarasneverdauskas.com/css-3d-lab/" },
+      { label: "The ledger", url: "https://articles.edgarasneverdauskas.com/css-3d-lab-ledger/" },
     ],
     note: "Every model ships its snippet, its explanation and its video free — the snippet is checked at build time, so a model without copy-paste code cannot be published.",
     featured: true,
@@ -198,6 +200,7 @@ export const projects: Project[] = [
     links: [
       { label: "Live product", url: "https://jarvis.edgarasneverdauskas.com" },
       { label: "Source", url: "https://github.com/Evirtual/jarvis" },
+      { label: "Article", url: "https://articles.edgarasneverdauskas.com/jarvis/" },
     ],
     note: "It runs as a PC app with its own server, or as a page on GitHub Pages with none — the same code, and the same behaviour, because the back end is one module given two places to keep keys.",
     featured: true,
@@ -258,7 +261,7 @@ export const projects: Project[] = [
     summary:
       "An electric-vehicle catalogue and comparison platform: structured EV data, search, filtering, and side-by-side model comparison built for clarity at scale.",
     problem:
-      "Buyers researching EVs are stuck with inconsistent spec sheets scattered across manufacturer sites. Ampuno normalizes hundreds of models into a single, comparable, searchable catalogue.",
+      "Buyers researching EVs are stuck with inconsistent spec sheets. Ampuno takes the public OpenEV Data releases, validates them without inferring missing values, and turns hundreds of models into one comparable, searchable catalogue.",
     ownership: [
       "Full product and engineering ownership, end to end",
       "Data ingestion, normalization and validation pipeline for hundreds of vehicle models and 1,000+ variants",
@@ -266,7 +269,7 @@ export const projects: Project[] = [
       "Test strategy, SEO/canonical metadata and deployment workflow",
     ],
     challenges: [
-      "Normalizing inconsistent, multi-source EV specification data into a single reliable schema",
+      "Normalizing inconsistent EV specification data into a single reliable schema, without filling gaps with guesses",
       "Keeping search and filtering fast and accurate across a large, frequently-updated dataset",
       "Structuring comparison UX so dense technical data stays scannable",
     ],
@@ -329,6 +332,7 @@ export const projects: Project[] = [
     ],
     links: [
       { label: "Live product", url: "https://selfawarewriting.com" },
+      { label: "Article", url: "https://articles.edgarasneverdauskas.com/self-aware-writing/" },
     ],
     note: "Deliberately unfinished — chapters are added as they are written, and the next one sits listed and locked in the sidebar before it exists.",
     featured: true,
@@ -346,26 +350,27 @@ export const projects: Project[] = [
     ownership: [
       "Product direction and UX across multiple platform iterations",
       "Authentication, user profiles, posts and media upload flows",
-      "Responsive application architecture across web and native-web surfaces",
+      "Responsive application architecture, rewritten in TypeScript in 2026",
       "Ongoing iteration and modernization of the technology stack",
     ],
     challenges: [
       "Maintaining product continuity through several rounds of architecture and stack changes",
-      "Building responsive interfaces that work consistently across web and React Native Web surfaces",
+      "Rewriting a live product with real users in TypeScript, with unit and browser tests added along the way",
       "Iterating on a live consumer product without a dedicated backend team",
     ],
     decisions: [
       "Firebase as a managed backend to keep infrastructure overhead low for a founder-run product",
-      "React Native Web to share application logic between web and native-leaning surfaces",
-      "Progressive modernization of the stack (Next.js, styled-components) rather than a disruptive rewrite",
+            "Years of progressive modernization, then a full rewrite in TypeScript and Tailwind CSS in 2026, in line with my other TypeScript projects",
       "A Cloudflare Worker fronting Cloudinary for media, keeping image handling off the Firebase bill",
     ],
     tech: [
       "Next.js",
       "React",
       "Firebase",
-      "React Native Web",
-      "styled-components",
+      "TypeScript",
+      "Tailwind CSS",
+      "Vitest",
+      "Playwright",
       "Cloudflare Workers",
       "Cloudinary",
     ],
