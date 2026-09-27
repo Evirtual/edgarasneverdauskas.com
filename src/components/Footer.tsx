@@ -12,6 +12,14 @@ export default function Footer() {
         </p>
         <div className="flex gap-6 text-sm text-[var(--color-ink-muted)]">
           <a
+            href={site.articles}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[var(--color-ink)]"
+          >
+            Articles
+          </a>
+          <a
             href={site.github}
             target="_blank"
             rel="noopener noreferrer"

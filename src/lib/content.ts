@@ -13,6 +13,10 @@ export const site = {
   url: "https://edgarasneverdauskas.com",
   linkedin: "https://linkedin.com/in/edgarasneverdauskas",
   github: "https://github.com/Evirtual",
+  // The build stories: how each of these projects was actually made, counted from git and the
+  // session logs. Its own site, linked from the footer rather than the nav — it is where someone
+  // goes after the work, not instead of it.
+  articles: "https://articles.edgarasneverdauskas.com",
   cvPath: "/Edgaras_Neverdauskas_CV.pdf",
   stack: ["React", "TypeScript", "Next.js", "AI", "Web3", "Fintech"],
   yearsExperience: "10+",
