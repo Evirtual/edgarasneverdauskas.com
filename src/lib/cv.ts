@@ -47,7 +47,7 @@ export const productBullets: Record<string, string[]> = {
   // at two pages, and the longer versions pushed the seventh product onto a
   // third. An empty array would leave a product on the site only.
   "css-3d-lab": [
-    "Free gallery of 125 3D models built with CSS, each live beside a step-by-step explanation and editable copy-paste code.",
+    "Free, growing gallery of 3D models built with CSS, each live beside a step-by-step explanation and editable copy-paste code.",
     "Vite/TypeScript/Sass; pixel-measured sizing, a Playwright QA pass on every model, share images and videos filmed at build.",
   ],
   jarvis: [
@@ -59,7 +59,7 @@ export const productBullets: Record<string, string[]> = {
     "Weighted events and folded quiet stretches keep a decade readable; every event has a dated source URL a script re-verifies.",
   ],
   ampuno: [
-    "Normalizes 231 vehicle models and 1,105 variants from inconsistent multi-source data into one validated schema.",
+    "Normalizes 231 vehicle models and 1,105 variants from OpenEV Data into one validated schema, with no guessed values.",
     "Next.js static model and trim pages, a zod layer over raw data, Vitest and Playwright on search, filtering and comparison.",
   ],
   "self-aware-writing": [
@@ -68,7 +68,7 @@ export const productBullets: Record<string, string[]> = {
   ],
   atunicorn: [
     "Consumer social product in continuous iteration since 2021: authentication, profiles, posts and media upload.",
-    "Progressive modernization instead of a rewrite, sharing logic between web and native surfaces via React Native Web.",
+    "Years of progressive modernization, then a full TypeScript and Tailwind rewrite in 2026, with unit and browser tests.",
   ],
   "bitcoin-analytics": [
     "React/TypeScript/Vite dashboard for BTC market data: returns, volatility, drawdowns, moving averages, heatmap and Fear & Greed.",
