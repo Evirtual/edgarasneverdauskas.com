@@ -4,7 +4,8 @@
     {
       "name": "edgaras-portfolio",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "out", "-l", "4173"],
+      "runtimeArgs": ["serve", "out"],
+      "autoPort": true,
       "port": 4173
     }
   ]
