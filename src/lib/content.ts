@@ -112,31 +112,31 @@ export const projects: Project[] = [
     role: "Independent Product Engineer",
     started: "2026",
     summary:
-      "A free gallery of 135 3D models built with CSS — solids, product mockups, text, controls, loaders and whole scenes — each running live beside a step-by-step explanation and copy-paste code you can edit in the page.",
+      "A free, growing gallery of 3D models built with CSS — solids, product mockups, text, controls, loaders and whole scenes — each running live beside a step-by-step explanation and copy-paste code you can edit in the page.",
     problem:
       "CSS 3D tutorials show one spinning cube and stop. The hard parts are left out: closing a rounded box so you cannot see into it, keeping a scene the same shape at card size and in full screen, knowing what genuinely needs JavaScript. And code copied from a gallery usually depends on that gallery's build.",
     ownership: [
-      "Product, design and implementation end to end — 135 models, the gallery, a page for every model and group, and the tooling that keeps them consistent",
+      "Product, design and implementation end to end — every model, the gallery, a page for every model and group, and the tooling that keeps them consistent",
       "Every model in two forms: the site's own Sass, and a standalone HTML/CSS snippet with no build step, which the build refuses to ship without",
       "An editor in the page: change the snippet and the model re-renders in a sandboxed frame, saved in the browser only",
       "A camera that holds at every size: perspective lives inside the zoomed scene, so a model looks the same in a card, a dialog and a 4K full screen",
       "Media made at build time: a share image for every page and a vertical download video for every model, filmed from the built site by headless Chromium and ffmpeg",
       "Search: a real page per model and per group, with structured data, canonical addresses and a sitemap",
-      "A ledger that decides whether a release goes out: eleven automated checks over all 135 models — the written view contract, how each model looks on every surface it appears on, motion, the files the export dialog hands out, share images, keyboard and pause, box sizing, text contrast and frame times — each writing a verdict per model onto a board",
+      "A ledger that decides whether a release goes out: automated checks over every model — the written view contract, how each model looks on every surface it appears on, motion, the files the export dialog hands out, share images, keyboard and pause, box sizing, text contrast and frame times — each writing a verdict per model onto a board",
     ],
     challenges: [
-      "Sizing and centring 135 very different shapes evenly: element boxes miss what a ::before draws and count what clip-path cuts away, so the measurement is taken from the pixels actually drawn",
+      "Sizing and centring very different shapes evenly: element boxes miss what a ::before draws and count what clip-path cuts away, so the measurement is taken from the pixels actually drawn",
       "Rounded 3D boxes leak: at every corner you could see into an empty box, until a plate behind each face closed it",
       "Proving every model works: a QA pass plays each one the way its badge promises — hover, drag, click, scroll — and flags any that do not change on screen or spill out of their card",
-      "Keeping 135 animated scenes cheap: a model only exists in the page while its card is near the screen",
+      "Keeping a gallery of animated scenes cheap: a model only exists in the page while its card is near the screen",
       "A pass is only true of the code it ran on: a verdict expires when the model changes, or when any shared file on its render path does, so the board can say “passed on older code” instead of showing a green tick that quietly stopped being true",
     ],
     decisions: [
-      "Pure CSS wherever it can be (93 of the 135); where JavaScript is needed it only feeds numbers in, and CSS still does all the drawing",
+      "Pure CSS wherever it can be, which is most of them; where JavaScript is needed it only feeds numbers in, and CSS still does all the drawing",
       "Vite, TypeScript and Sass, with no UI framework and no 3D library",
       "Download videos served from a GitHub release rather than the site, so they do not count against the host's bandwidth; each deploy checks every file is there at its recorded size",
       "Free and open source under MIT, with no accounts and no ads; cookie-free analytics, and a coffee link instead of a paywall",
-      "Nothing ships on a claim: the release gate is the ledger itself, and ready means both halves — every check holding over all 135 models, and nothing on the board being old",
+      "Nothing ships on a claim: the release gate is the ledger itself, and ready means both halves — every check holding over every model, and nothing on the board being old",
     ],
     tech: [
       "TypeScript",
