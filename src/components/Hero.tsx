@@ -91,6 +91,14 @@ export default function Hero() {
                 Articles
               </a>
               <a
+                href={site.posts}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-[var(--color-ink)]"
+              >
+                Posts
+              </a>
+              <a
                 href="#contact"
                 className="transition-colors hover:text-[var(--color-ink)]"
               >

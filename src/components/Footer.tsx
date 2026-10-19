@@ -20,6 +20,14 @@ export default function Footer() {
             Articles
           </a>
           <a
+            href={site.posts}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[var(--color-ink)]"
+          >
+            Posts
+          </a>
+          <a
             href={site.github}
             target="_blank"
             rel="noopener noreferrer"

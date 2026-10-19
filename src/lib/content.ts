@@ -17,6 +17,8 @@ export const site = {
   // session logs. Its own site, linked from the footer rather than the nav — it is where someone
   // goes after the work, not instead of it.
   articles: "https://articles.edgarasneverdauskas.com",
+  // The short posts for Ko-fi, Facebook, Instagram and LinkedIn, in the same design as Articles.
+  posts: "https://posts.edgarasneverdauskas.com",
   cvPath: "/Edgaras_Neverdauskas_CV.pdf",
   stack: ["React", "TypeScript", "Next.js", "AI", "Web3", "Fintech"],
   yearsExperience: "10+",
